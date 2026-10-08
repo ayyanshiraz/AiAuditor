@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f6f9;
+  --foreground: #14181f;
+  --surface: #ffffff;
+  --surface-muted: #f1f3f6;
+  --border: #e2e5ea;
+  --border-strong: #ccd1d9;
+  --primary: #1e4d8f;
+  --primary-hover: #163a6c;
+  --primary-soft: #eaf1fb;
+  --primary-foreground: #ffffff;
+  --success: #147a4c;
+  --success-bg: #e6f5ee;
+  --danger: #b3261e;
+  --danger-bg: #fbe9e8;
+  --warning: #9a6700;
+  --warning-bg: #fdf3d9;
+  --muted-foreground: #5b6472;
+  --radius: 10px;
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-elevated: 0 4px 12px rgba(16, 24, 40, 0.08), 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1115;
+    --foreground: #e7e9ec;
+    --surface: #171a20;
+    --surface-muted: #1d2027;
+    --border: #2a2e37;
+    --border-strong: #3a3f4a;
+    --primary: #5b8fd6;
+    --primary-hover: #7aa4de;
+    --primary-soft: #1c2733;
+    --primary-foreground: #0f1115;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.24), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 4px 14px rgba(0, 0, 0, 0.35);
+    --success: #3fbf85;
+    --success-bg: #123526;
+    --danger: #e5827b;
+    --danger-bg: #3a1a18;
+    --warning: #e0b34e;
+    --warning-bg: #3a2c0c;
+    --muted-foreground: #9aa2b1;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-feature-settings: "tnum" 1;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
