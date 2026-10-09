@@ -240,7 +240,7 @@ export default function ProductionDashboard() {
                       { month: "Jul", height: "45%", val: "2,400" }, { month: "Aug", height: "70%", val: "3,200" },
                       { month: "Sep", height: "85%", val: "3,800" }, { month: "Oct", height: "95%", val: "4,100" },
                     ].map((bar, i) => (
-                      <div key={i} className="flex flex-col items-center w-full group">
+                      <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
                           <span className="absolute -top-8 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">{bar.val}</span>
                           <div className="w-full max-w-[3rem] bg-orange-600/40 hover:bg-orange-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>

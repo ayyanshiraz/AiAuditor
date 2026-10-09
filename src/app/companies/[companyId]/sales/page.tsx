@@ -192,7 +192,7 @@ export default function SalesDashboard() {
                       { month: "Jul", height: "45%", val: "2.4M" }, { month: "Aug", height: "70%", val: "3.2M" },
                       { month: "Sep", height: "85%", val: "3.8M" }, { month: "Oct", height: "95%", val: "4.2M" },
                     ].map((bar, i) => (
-                      <div key={i} className="flex flex-col items-center w-full group">
+                      <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
                           <span className="absolute -top-8 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">PKR {bar.val}</span>
                           <div className="w-full max-w-[3rem] bg-emerald-600/40 hover:bg-emerald-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
@@ -383,7 +383,7 @@ export default function SalesDashboard() {
                   </thead>
                   <tbody className="divide-y divide-gray-800/60">
                     {customers.length === 0 ? (
-                      <tr><td colSpan={5} className="px-4 py-12 text-center text-gray-500">No customers found. Click "Add Customer" to get started.</td></tr>
+                      <tr><td colSpan={5} className="px-4 py-12 text-center text-gray-500">No customers found. Click Add Customer to get started.</td></tr>
                     ) : (
                       customers.map((cust) => (
                         <tr key={cust.id} className="hover:bg-gray-800/40 transition-colors group">
