@@ -133,16 +133,16 @@ export default function SalesDashboard() {
   const isShortage = shortageAmount > 0;
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-[var(--background)] overflow-hidden relative">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50 overflow-hidden relative">
       
       {/* Sidebar Navigation */}
-      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0 z-20">
-        <div className="p-4 md:p-6 border-b border-gray-800">
-          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 bg-white flex flex-col flex-shrink-0 z-20">
+        <div className="p-4 md:p-6 border-b border-gray-200">
+          <a href="." className="text-gray-500 hover:text-gray-900 transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
             ← Back to Modules
           </a>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <ShoppingCart className="h-5 w-5 text-emerald-500" /> Sales
+          <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+            <ShoppingCart className="h-5 w-5 text-emerald-600" /> Sales
           </h2>
         </div>
         
@@ -154,24 +154,24 @@ export default function SalesDashboard() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0a]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
         <div className="max-w-7xl mx-auto pb-12">
 
           {/* --- DASHBOARD TAB --- */}
           {activeTab === "dashboard" && (
             <div className="space-y-8">
               <div>
-                <h1 className="text-2xl font-bold text-white">Sales & Revenue Intelligence</h1>
-                <p className="text-gray-400 text-sm mt-1">Comprehensive overview of orders, revenue, and customer performance.</p>
+                <h1 className="text-2xl font-bold text-gray-900">Sales & Revenue Intelligence</h1>
+                <p className="text-gray-500 text-sm mt-1">Comprehensive overview of orders, revenue, and customer performance.</p>
               </div>
 
               {/* Core Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <StatCard title="Total Sales" value="PKR 4.2M" icon={<DollarSign className="h-5 w-5 text-emerald-500" />} />
-                <StatCard title="Revenue (MTD)" value="PKR 1.8M" icon={<TrendingUp className="h-5 w-5 text-cyan-500" />} />
-                <StatCard title="Total Orders" value="1,284" icon={<ShoppingCart className="h-5 w-5 text-blue-500" />} />
+                <StatCard title="Total Sales" value="PKR 4.2M" icon={<DollarSign className="h-5 w-5 text-emerald-600" />} />
+                <StatCard title="Revenue (MTD)" value="PKR 1.8M" icon={<TrendingUp className="h-5 w-5 text-cyan-600" />} />
+                <StatCard title="Total Orders" value="1,284" icon={<ShoppingCart className="h-5 w-5 text-blue-600" />} />
                 <StatCard title="Pending Orders" value="42" icon={<Clock className="h-5 w-5 text-yellow-500" />} alert />
-                <StatCard title="Completed Orders" value="1,150" icon={<CheckCircle className="h-5 w-5 text-green-500" />} />
+                <StatCard title="Completed Orders" value="1,150" icon={<CheckCircle className="h-5 w-5 text-green-600" />} />
                 <StatCard title="Cancelled Orders" value="12" icon={<X className="h-5 w-5 text-red-500" />} alert />
               </div>
 
@@ -179,14 +179,14 @@ export default function SalesDashboard() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 
                 {/* Chart 1: Revenue Trend Bar Chart */}
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-emerald-500" /> Revenue Trend
+                    <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-emerald-600" /> Revenue Trend
                     </h2>
-                    <span className="text-xs font-medium bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded-full">+14.2% Growth</span>
+                    <span className="text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-1 rounded-full">+14.2% Growth</span>
                   </div>
-                  <div className="flex items-end justify-between h-48 gap-2 mt-4 pt-6 border-b border-gray-800 pb-2">
+                  <div className="flex items-end justify-between h-48 gap-2 mt-4 pt-6 border-b border-gray-200 pb-2">
                     {[
                       { month: "May", height: "40%", val: "2.1M" }, { month: "Jun", height: "55%", val: "2.8M" },
                       { month: "Jul", height: "45%", val: "2.4M" }, { month: "Aug", height: "70%", val: "3.2M" },
@@ -194,8 +194,8 @@ export default function SalesDashboard() {
                     ].map((bar, i) => (
                       <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
-                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">PKR {bar.val}</span>
-                          <div className="w-full max-w-[3rem] bg-emerald-600/40 hover:bg-emerald-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
+                          <span className="absolute -top-8 text-xs font-semibold text-gray-900 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity bg-white border border-gray-200 shadow-md px-2 py-1 rounded">PKR {bar.val}</span>
+                          <div className="w-full max-w-[3rem] bg-emerald-100 hover:bg-emerald-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
                         </div>
                         <span className="text-xs text-gray-500 mt-3">{bar.month}</span>
                       </div>
@@ -204,13 +204,13 @@ export default function SalesDashboard() {
                 </div>
 
                 {/* Chart 2: Order Status Distribution Graph */}
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-6">
-                    <Activity className="h-5 w-5 text-blue-500" /> Order Status Distribution
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+                  <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-6">
+                    <Activity className="h-5 w-5 text-blue-600" /> Order Status Distribution
                   </h2>
                   <div className="space-y-6">
                     {/* Stacked Progress Bar */}
-                    <div className="w-full h-8 flex rounded-md overflow-hidden bg-gray-800">
+                    <div className="w-full h-8 flex rounded-md overflow-hidden bg-gray-100 border border-gray-200">
                       <div className="h-full bg-emerald-500" style={{ width: "70%" }} title="Completed"></div>
                       <div className="h-full bg-blue-500" style={{ width: "15%" }} title="Processing"></div>
                       <div className="h-full bg-yellow-500" style={{ width: "10%" }} title="Pending"></div>
@@ -229,16 +229,16 @@ export default function SalesDashboard() {
 
               {/* Lists: Top Sellers & Customers */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2"><Package className="h-5 w-5 text-purple-500" /> Top Selling Parts</h2>
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2"><Package className="h-5 w-5 text-purple-600" /> Top Selling Parts</h2>
                   <ul className="space-y-4">
                     <TopListItem rank="1" name="Intake Valve Set (EV-001)" value="840 Units" rev="PKR 1.2M" />
                     <TopListItem rank="2" name="Master Cylinder (MC-102)" value="320 Units" rev="PKR 850K" />
                     <TopListItem rank="3" name="Brake Pads (BP-209)" value="215 Units" rev="PKR 420K" />
                   </ul>
                 </div>
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2"><Users className="h-5 w-5 text-blue-500" /> Top Customers</h2>
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2"><Users className="h-5 w-5 text-blue-600" /> Top Customers</h2>
                   <ul className="space-y-4">
                     <TopListItem rank="1" name="Ali Motors" value="42 Orders" rev="PKR 2.4M" />
                     <TopListItem rank="2" name="Auto Parts City" value="28 Orders" rev="PKR 1.1M" />
@@ -248,20 +248,20 @@ export default function SalesDashboard() {
               </div>
 
               {/* Sales Workflow Flowchart */}
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 overflow-x-auto">
-                <h2 className="text-lg font-bold text-white mb-8">Sales Order Lifecycle Workflow</h2>
+              <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-8 overflow-x-auto">
+                <h2 className="text-lg font-bold text-gray-900 mb-8">Sales Order Lifecycle Workflow</h2>
                 <div className="flex items-center justify-between min-w-[900px] py-4">
-                  <WorkflowNode icon={<FileText className="h-6 w-6 text-gray-400" />} title="Draft" desc="Quote Created" color="gray" />
+                  <WorkflowNode icon={<FileText className="h-6 w-6 text-gray-500" />} title="Draft" desc="Quote Created" color="gray" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<CheckCircle className="h-6 w-6 text-blue-400" />} title="Confirmed" desc="Order Approved" color="blue" />
+                  <WorkflowNode icon={<CheckCircle className="h-6 w-6 text-blue-600" />} title="Confirmed" desc="Order Approved" color="blue" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Package className="h-6 w-6 text-purple-400" />} title="Reserved" desc="Stock Allocated" color="purple" />
+                  <WorkflowNode icon={<Package className="h-6 w-6 text-purple-600" />} title="Reserved" desc="Stock Allocated" color="purple" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Factory className="h-6 w-6 text-yellow-400" />} title="Processing" desc="Pick & Pack" color="yellow" />
+                  <WorkflowNode icon={<Factory className="h-6 w-6 text-yellow-600" />} title="Processing" desc="Pick & Pack" color="yellow" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Truck className="h-6 w-6 text-indigo-400" />} title="Shipped" desc="In Transit" color="indigo" />
+                  <WorkflowNode icon={<Truck className="h-6 w-6 text-indigo-600" />} title="Shipped" desc="In Transit" color="indigo" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<CheckCircle className="h-6 w-6 text-emerald-400" />} title="Completed" desc="Delivered & Paid" color="emerald" />
+                  <WorkflowNode icon={<CheckCircle className="h-6 w-6 text-emerald-600" />} title="Completed" desc="Delivered & Paid" color="emerald" />
                 </div>
               </div>
             </div>
@@ -269,25 +269,25 @@ export default function SalesDashboard() {
 
           {/* --- ORDERS TAB --- */}
           {activeTab === "orders" && (
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6 flex flex-col min-h-[85vh]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Sales Orders Ledger</h2>
-                  <p className="text-gray-400 text-sm mt-1">Manage full order cycles from draft to completion with live workflow tracking.</p>
+                  <h2 className="text-xl font-bold text-gray-900">Sales Orders Ledger</h2>
+                  <p className="text-gray-500 text-sm mt-1">Manage full order cycles from draft to completion with live workflow tracking.</p>
                 </div>
                 <div className="flex gap-3">
-                  <button className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-700">
+                  <button className="bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-300 shadow-sm">
                     <Filter className="h-4 w-4" /> Filter
                   </button>
-                  <button onClick={() => openOrderModal()} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20">
+                  <button onClick={() => openOrderModal()} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-sm">
                     <Plus className="h-4 w-4" /> Create Sales Order
                   </button>
                 </div>
               </div>
               
-              <div className="overflow-auto flex-1 rounded-lg border border-gray-800 bg-gray-950/50">
-                <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
-                  <thead className="text-xs text-gray-400 uppercase bg-gray-900 sticky top-0 z-10 border-b border-gray-800">
+              <div className="overflow-auto flex-1 rounded-lg border border-gray-200 bg-white shadow-sm">
+                <table className="w-full text-left text-sm text-gray-700 whitespace-nowrap">
+                  <thead className="text-xs text-gray-500 uppercase bg-gray-50 sticky top-0 z-10 border-b border-gray-200">
                     <tr>
                       <th className="px-4 py-4 font-medium">Order Number</th>
                       <th className="px-4 py-4 font-medium">Customer & Details</th>
@@ -297,35 +297,35 @@ export default function SalesDashboard() {
                       <th className="px-4 py-4 font-medium text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-800/60">
+                  <tbody className="divide-y divide-gray-200">
                     {orders.length === 0 ? (
                       <tr><td colSpan={6} className="px-4 py-12 text-center text-gray-500">No orders found.</td></tr>
                     ) : (
                       orders.map((order) => (
-                        <tr key={order.id} className="hover:bg-gray-800/40 transition-colors group">
-                          <td className="px-4 py-4 font-bold text-white">
+                        <tr key={order.id} className="hover:bg-gray-50 transition-colors group">
+                          <td className="px-4 py-4 font-bold text-gray-900">
                             {order.orderNumber}
                             <div className="text-xs text-gray-500 mt-1 font-normal">Created: {order.orderDate}</div>
                             <div className="text-xs text-gray-500 font-normal">Delivery: {order.deliveryDate}</div>
                           </td>
                           <td className="px-4 py-4">
-                            <div className="text-emerald-400 font-medium">{order.customerName}</div>
-                            <div className="text-xs text-gray-400 mt-1">Rep: {order.salesperson}</div>
+                            <div className="text-emerald-700 font-medium">{order.customerName}</div>
+                            <div className="text-xs text-gray-500 mt-1">Rep: {order.salesperson}</div>
                             <div className="text-xs text-gray-500">WH: {order.warehouse}</div>
                           </td>
                           <td className="px-4 py-4">
-                            <div className="font-bold text-white">{order.partNumber}</div>
-                            <div className="text-xs text-gray-400">{order.partName}</div>
-                            <div className="text-xs text-blue-400 mt-1 font-mono">Qty: {order.quantity} Units</div>
+                            <div className="font-bold text-gray-900">{order.partNumber}</div>
+                            <div className="text-xs text-gray-500">{order.partName}</div>
+                            <div className="text-xs text-blue-600 mt-1 font-mono">Qty: {order.quantity} Units</div>
                           </td>
                           <td className="px-4 py-4">
-                            <div className="font-bold text-white">PKR {order.totalAmount}</div>
+                            <div className="font-bold text-gray-900">PKR {order.totalAmount}</div>
                             <div className="text-xs text-gray-500 mt-1">Price: PKR {order.unitPrice}</div>
                             <div className="text-xs text-gray-500">Discount: {order.discount} | Tax: {order.tax}</div>
                           </td>
                           <td className="px-4 py-4 min-w-[280px]">
                             <div className="mb-3">
-                              <span className={`px-2.5 py-1 rounded-md text-xs font-semibold border ${order.status === "Completed" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : order.status === "Reserved" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : order.status === "Processing" ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" : "bg-gray-800 text-gray-300 border-gray-700"}`}>
+                              <span className={`px-2.5 py-1 rounded-md text-xs font-semibold border ${order.status === "Completed" ? "bg-emerald-50 text-emerald-700 border-emerald-200" : order.status === "Reserved" ? "bg-purple-50 text-purple-700 border-purple-200" : order.status === "Processing" ? "bg-yellow-50 text-yellow-700 border-yellow-200" : "bg-gray-100 text-gray-700 border-gray-200"}`}>
                                 {order.status}
                               </span>
                             </div>
@@ -335,8 +335,8 @@ export default function SalesDashboard() {
                                 const isActive = currentStepIdx !== -1 && idx <= currentStepIdx;
                                 return (
                                   <div key={step} className="flex-1 flex flex-col gap-1" title={step}>
-                                    <div className={`h-1.5 w-full rounded-full ${isActive ? "bg-emerald-500" : "bg-gray-700"}`}></div>
-                                    <span className={`text-[9px] font-medium text-center ${isActive ? "text-emerald-300" : "text-gray-500"}`}>{step}</span>
+                                    <div className={`h-1.5 w-full rounded-full ${isActive ? "bg-emerald-500" : "bg-gray-200"}`}></div>
+                                    <span className={`text-[9px] font-medium text-center ${isActive ? "text-emerald-600" : "text-gray-400"}`}>{step}</span>
                                   </div>
                                 );
                               })}
@@ -344,8 +344,8 @@ export default function SalesDashboard() {
                           </td>
                           <td className="px-4 py-4 text-right">
                             <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                              <button onClick={() => openOrderModal(order)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded"><Edit className="h-4 w-4" /></button>
-                              <button onClick={() => handleDeleteOrder(order.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded"><Trash2 className="h-4 w-4" /></button>
+                              <button onClick={() => openOrderModal(order)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-emerald-50 text-gray-600 hover:text-emerald-600 rounded transition-colors"><Edit className="h-4 w-4" /></button>
+                              <button onClick={() => handleDeleteOrder(order.id)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-red-50 text-gray-600 hover:text-red-600 rounded transition-colors"><Trash2 className="h-4 w-4" /></button>
                             </div>
                           </td>
                         </tr>
@@ -359,25 +359,25 @@ export default function SalesDashboard() {
 
           {/* --- CUSTOMERS TAB (FULLY FUNCTIONAL) --- */}
           {activeTab === "customers" && (
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6 flex flex-col min-h-[85vh]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Customer Directory</h2>
-                  <p className="text-gray-400 text-sm mt-1">Manage all B2B and B2C client accounts, details, and financial terms.</p>
+                  <h2 className="text-xl font-bold text-gray-900">Customer Directory</h2>
+                  <p className="text-gray-500 text-sm mt-1">Manage all B2B and B2C client accounts, details, and financial terms.</p>
                 </div>
                 <div className="flex gap-3">
-                  <button className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-700">
+                  <button className="bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-300 shadow-sm">
                     <Filter className="h-4 w-4" /> Filter
                   </button>
-                  <button onClick={() => openCustModal()} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-blue-500/20">
+                  <button onClick={() => openCustModal()} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-sm">
                     <Plus className="h-4 w-4" /> Add Customer
                   </button>
                 </div>
               </div>
               
-              <div className="overflow-auto flex-1 rounded-lg border border-gray-800 bg-gray-950/50">
-                <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
-                  <thead className="text-xs text-gray-400 uppercase bg-gray-900 sticky top-0 z-10 border-b border-gray-800">
+              <div className="overflow-auto flex-1 rounded-lg border border-gray-200 bg-white shadow-sm">
+                <table className="w-full text-left text-sm text-gray-700 whitespace-nowrap">
+                  <thead className="text-xs text-gray-500 uppercase bg-gray-50 sticky top-0 z-10 border-b border-gray-200">
                     <tr>
                       <th className="px-4 py-4 font-medium">Customer & Type</th>
                       <th className="px-4 py-4 font-medium">Contact Details</th>
@@ -386,50 +386,50 @@ export default function SalesDashboard() {
                       <th className="px-4 py-4 font-medium text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-800/60">
+                  <tbody className="divide-y divide-gray-200">
                     {customers.length === 0 ? (
                       <tr><td colSpan={5} className="px-4 py-12 text-center text-gray-500">No customers found. Click "Add Customer" to get started.</td></tr>
                     ) : (
                       customers.map((cust) => (
-                        <tr key={cust.id} className="hover:bg-gray-800/40 transition-colors group">
+                        <tr key={cust.id} className="hover:bg-gray-50 transition-colors group">
                           <td className="px-4 py-4">
-                            <div className="font-bold text-white text-base">{cust.companyName}</div>
+                            <div className="font-bold text-gray-900 text-base">{cust.companyName}</div>
                             <div className="text-xs text-gray-500 mt-1 font-mono">Code: {cust.code}</div>
                             <div className="mt-2">
-                              <span className={`px-2 py-1 rounded text-xs font-medium border ${cust.customerType === "Wholesale" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : cust.customerType === "Retail" ? "bg-blue-500/10 text-blue-400 border-blue-500/20" : "bg-orange-500/10 text-orange-400 border-orange-500/20"}`}>
+                              <span className={`px-2 py-1 rounded text-xs font-medium border ${cust.customerType === "Wholesale" ? "bg-purple-50 text-purple-700 border-purple-200" : cust.customerType === "Retail" ? "bg-blue-50 text-blue-700 border-blue-200" : "bg-orange-50 text-orange-700 border-orange-200"}`}>
                                 {cust.customerType}
                               </span>
                             </div>
                           </td>
                           <td className="px-4 py-4">
-                            <div className="font-medium text-gray-200">{cust.contactPerson}</div>
-                            <div className="text-xs text-gray-400 mt-1">{cust.phone}</div>
-                            <div className="text-xs text-gray-400">{cust.email}</div>
+                            <div className="font-medium text-gray-900">{cust.contactPerson}</div>
+                            <div className="text-xs text-gray-500 mt-1">{cust.phone}</div>
+                            <div className="text-xs text-gray-500">{cust.email}</div>
                           </td>
                           <td className="px-4 py-4">
                             <div className="flex items-start gap-2">
-                              <Building2 className="h-3.5 w-3.5 mt-0.5 text-gray-500 flex-shrink-0"/> 
+                              <Building2 className="h-3.5 w-3.5 mt-0.5 text-gray-400 flex-shrink-0"/> 
                               <div>
                                 <span className="text-xs text-gray-500 block mb-0.5">Billing</span>
-                                <span className="text-xs text-gray-300 whitespace-normal max-w-[200px] block">{cust.billingAddress}</span>
+                                <span className="text-xs text-gray-700 whitespace-normal max-w-[200px] block">{cust.billingAddress}</span>
                               </div>
                             </div>
                             <div className="flex items-start gap-2 mt-3">
-                              <MapPin className="h-3.5 w-3.5 mt-0.5 text-gray-500 flex-shrink-0"/> 
+                              <MapPin className="h-3.5 w-3.5 mt-0.5 text-gray-400 flex-shrink-0"/> 
                               <div>
                                 <span className="text-xs text-gray-500 block mb-0.5">Shipping</span>
-                                <span className="text-xs text-gray-300 whitespace-normal max-w-[200px] block">{cust.shippingAddress}</span>
+                                <span className="text-xs text-gray-700 whitespace-normal max-w-[200px] block">{cust.shippingAddress}</span>
                               </div>
                             </div>
                           </td>
                           <td className="px-4 py-4">
-                            <div><span className="text-gray-500 text-xs">Payment Term:</span> <span className="text-gray-300 ml-1">{cust.paymentTerms}</span></div>
-                            <div className="mt-2"><span className="text-gray-500 text-xs">Credit Limit:</span> <span className="font-bold text-emerald-400 ml-1">{cust.creditLimit}</span></div>
+                            <div><span className="text-gray-500 text-xs">Payment Term:</span> <span className="text-gray-800 ml-1">{cust.paymentTerms}</span></div>
+                            <div className="mt-2"><span className="text-gray-500 text-xs">Credit Limit:</span> <span className="font-bold text-emerald-600 ml-1">{cust.creditLimit}</span></div>
                           </td>
                           <td className="px-4 py-4 text-right">
                             <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                              <button onClick={() => openCustModal(cust)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded transition-colors" title="Edit Customer"><Edit className="h-4 w-4" /></button>
-                              <button onClick={() => handleDeleteCust(cust.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded transition-colors" title="Delete Customer"><Trash2 className="h-4 w-4" /></button>
+                              <button onClick={() => openCustModal(cust)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-blue-50 text-gray-600 hover:text-blue-600 rounded transition-colors" title="Edit Customer"><Edit className="h-4 w-4" /></button>
+                              <button onClick={() => handleDeleteCust(cust.id)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-red-50 text-gray-600 hover:text-red-600 rounded transition-colors" title="Delete Customer"><Trash2 className="h-4 w-4" /></button>
                             </div>
                           </td>
                         </tr>
@@ -448,17 +448,17 @@ export default function SalesDashboard() {
 
       {/* Sales Order Modal */}
       {isOrderModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-5xl flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h2 className="text-xl font-bold text-white">{editingOrderId ? "Edit Sales Order" : "Create Sales Order"}</h2>
-              <button onClick={() => setIsOrderModalOpen(false)} className="text-gray-400 hover:text-white"><X className="h-6 w-6" /></button>
+        <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-2xl w-full max-w-5xl flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900">{editingOrderId ? "Edit Sales Order" : "Create Sales Order"}</h2>
+              <button onClick={() => setIsOrderModalOpen(false)} className="text-gray-500 hover:text-gray-900"><X className="h-6 w-6" /></button>
             </div>
             <form onSubmit={handleSaveOrder} className="overflow-y-auto p-6 space-y-8 flex-1 custom-scrollbar">
               
               {/* Order Meta */}
               <div>
-                <h3 className="text-sm font-semibold text-emerald-500 uppercase tracking-wider mb-4">1. Order Details</h3>
+                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-4">1. Order Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <InputField label="Order Number" value={orderForm.orderNumber} onChange={(e: any) => setOrderForm({...orderForm, orderNumber: e.target.value})} required />
                   <InputField label="Customer" value={orderForm.customerName} onChange={(e: any) => setOrderForm({...orderForm, customerName: e.target.value})} required />
@@ -468,8 +468,8 @@ export default function SalesDashboard() {
                   <InputField label="Warehouse" value={orderForm.warehouse} onChange={(e: any) => setOrderForm({...orderForm, warehouse: e.target.value})} />
                   
                   <div className="flex flex-col gap-1 col-span-2">
-                    <label className="text-xs font-medium text-gray-400">Order Status</label>
-                    <select value={orderForm.status} onChange={(e) => setOrderForm({ ...orderForm, status: e.target.value as OrderStatus })} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                    <label className="text-xs font-medium text-gray-600">Order Status</label>
+                    <select value={orderForm.status} onChange={(e) => setOrderForm({ ...orderForm, status: e.target.value as OrderStatus })} className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-500 shadow-sm">
                       <option value="Draft">Draft</option>
                       <option value="Confirmed">Confirmed</option>
                       <option value="Reserved">Reserved</option>
@@ -486,7 +486,7 @@ export default function SalesDashboard() {
 
               {/* Line Item */}
               <div>
-                <h3 className="text-sm font-semibold text-emerald-500 uppercase tracking-wider mb-4">2. Part Information & Integration</h3>
+                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-4">2. Part Information & Integration</h3>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                   <InputField label="Part Number" value={orderForm.partNumber} onChange={(e: any) => setOrderForm({...orderForm, partNumber: e.target.value})} required />
                   <div className="col-span-2"><InputField label="Part Name" value={orderForm.partName} onChange={(e: any) => setOrderForm({...orderForm, partName: e.target.value})} required /></div>
@@ -496,26 +496,26 @@ export default function SalesDashboard() {
 
                 {/* Integration Check: Stock Verification logic */}
                 {orderForm.quantity && (
-                  <div className={`p-5 rounded-xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${isShortage ? "bg-red-500/10 border-red-500/30" : "bg-emerald-500/10 border-emerald-500/30"}`}>
+                  <div className={`p-5 rounded-xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${isShortage ? "bg-red-50 border-red-200" : "bg-emerald-50 border-emerald-200"}`}>
                     <div>
-                      <h4 className={`text-sm font-bold flex items-center gap-2 ${isShortage ? "text-red-400" : "text-emerald-400"}`}>
+                      <h4 className={`text-sm font-bold flex items-center gap-2 ${isShortage ? "text-red-700" : "text-emerald-700"}`}>
                         {isShortage ? <AlertTriangle className="h-4 w-4" /> : <CheckCircle className="h-4 w-4" />}
                         Live Inventory Verification
                       </h4>
                       <div className="flex flex-wrap items-center gap-4 text-xs mt-3">
-                        <span className="bg-gray-900 px-3 py-1.5 rounded-md border border-gray-700 text-gray-300">
-                          Available Stock: <span className="font-bold text-white ml-1">{availableStock}</span>
+                        <span className="bg-white px-3 py-1.5 rounded-md border border-gray-200 text-gray-600 shadow-sm">
+                          Available Stock: <span className="font-bold text-gray-900 ml-1">{availableStock}</span>
                         </span>
-                        <span className="bg-gray-900 px-3 py-1.5 rounded-md border border-gray-700 text-gray-300">
-                          Reserved Stock: <span className="font-bold text-white ml-1">{reservedStock}</span>
+                        <span className="bg-white px-3 py-1.5 rounded-md border border-gray-200 text-gray-600 shadow-sm">
+                          Reserved Stock: <span className="font-bold text-gray-900 ml-1">{reservedStock}</span>
                         </span>
-                        <span className={`px-3 py-1.5 rounded-md border font-bold ${isShortage ? "bg-red-950/50 border-red-500/30 text-red-400" : "bg-emerald-950/50 border-emerald-500/30 text-emerald-400"}`}>
+                        <span className={`px-3 py-1.5 rounded-md border font-bold ${isShortage ? "bg-red-100 border-red-300 text-red-700" : "bg-emerald-100 border-emerald-300 text-emerald-700"}`}>
                           Shortage: {isShortage ? shortageAmount : 0}
                         </span>
                       </div>
                     </div>
                     {isShortage && (
-                      <button type="button" className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 transition-colors flex-shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+                      <button type="button" className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 transition-colors flex-shrink-0 shadow-sm">
                         <Factory className="h-4 w-4" /> Create Production Order
                       </button>
                     )}
@@ -525,7 +525,7 @@ export default function SalesDashboard() {
 
               {/* Financials */}
               <div>
-                <h3 className="text-sm font-semibold text-emerald-500 uppercase tracking-wider mb-4">3. Financial Summary</h3>
+                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-4">3. Financial Summary</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <InputField label="Discount (PKR)" type="number" value={orderForm.discount} onChange={(e: any) => setOrderForm({...orderForm, discount: e.target.value})} />
                   <InputField label="Tax (%)" value={orderForm.tax} onChange={(e: any) => setOrderForm({...orderForm, tax: e.target.value})} />
@@ -535,9 +535,9 @@ export default function SalesDashboard() {
               </div>
 
             </form>
-            <div className="p-6 border-t border-gray-800 bg-gray-950 flex justify-end gap-3 rounded-b-xl">
-              <button type="button" onClick={() => setIsOrderModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-800">Cancel</button>
-              <button onClick={handleSaveOrder} className="px-6 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium flex items-center gap-2 shadow-lg shadow-emerald-500/20"><Save className="h-4 w-4" /> Save Order</button>
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3 rounded-b-xl">
+              <button type="button" onClick={() => setIsOrderModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 shadow-sm">Cancel</button>
+              <button onClick={handleSaveOrder} className="px-6 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium flex items-center gap-2 shadow-sm"><Save className="h-4 w-4" /> Save Order</button>
             </div>
           </div>
         </div>
@@ -545,22 +545,22 @@ export default function SalesDashboard() {
 
       {/* Customer Modal */}
       {isCustModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-4xl flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h2 className="text-xl font-bold text-white">{editingCustId ? "Edit Customer Profile" : "Add New Customer"}</h2>
-              <button onClick={() => setIsCustModalOpen(false)} className="text-gray-400 hover:text-white transition-colors"><X className="h-6 w-6" /></button>
+        <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-2xl w-full max-w-4xl flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900">{editingCustId ? "Edit Customer Profile" : "Add New Customer"}</h2>
+              <button onClick={() => setIsCustModalOpen(false)} className="text-gray-500 hover:text-gray-900 transition-colors"><X className="h-6 w-6" /></button>
             </div>
             <form onSubmit={handleSaveCust} className="overflow-y-auto p-6 space-y-6 flex-1 custom-scrollbar">
               
               <div>
-                <h3 className="text-sm font-semibold text-blue-500 uppercase tracking-wider mb-4">1. Primary Information</h3>
+                <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">1. Primary Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <InputField label="Customer Code" value={custForm.code} onChange={(e: any) => setCustForm({...custForm, code: e.target.value})} required placeholder="e.g., CUST-001" />
                   <InputField label="Company Name" value={custForm.companyName} onChange={(e: any) => setCustForm({...custForm, companyName: e.target.value})} required placeholder="e.g., Ali Motors" />
                   <div className="flex flex-col gap-1">
-                    <label className="text-xs font-medium text-gray-400">Customer Type</label>
-                    <select value={custForm.customerType} onChange={(e) => setCustForm({...custForm, customerType: e.target.value})} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                    <label className="text-xs font-medium text-gray-600">Customer Type</label>
+                    <select value={custForm.customerType} onChange={(e) => setCustForm({...custForm, customerType: e.target.value})} className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-blue-500 shadow-sm">
                       <option value="Retail">Retail</option>
                       <option value="Wholesale">Wholesale</option>
                       <option value="Distributor">Distributor</option>
@@ -570,7 +570,7 @@ export default function SalesDashboard() {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-blue-500 uppercase tracking-wider mb-4">2. Contact Details</h3>
+                <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">2. Contact Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <InputField label="Contact Person" value={custForm.contactPerson} onChange={(e: any) => setCustForm({...custForm, contactPerson: e.target.value})} required />
                   <InputField label="Phone Number" value={custForm.phone} onChange={(e: any) => setCustForm({...custForm, phone: e.target.value})} required placeholder="+92 300 0000000" />
@@ -579,7 +579,7 @@ export default function SalesDashboard() {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-blue-500 uppercase tracking-wider mb-4">3. Location & Addresses</h3>
+                <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">3. Location & Addresses</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <InputField label="Billing Address" value={custForm.billingAddress} onChange={(e: any) => setCustForm({...custForm, billingAddress: e.target.value})} required />
                   <InputField label="Shipping Address" value={custForm.shippingAddress} onChange={(e: any) => setCustForm({...custForm, shippingAddress: e.target.value})} required />
@@ -587,7 +587,7 @@ export default function SalesDashboard() {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-blue-500 uppercase tracking-wider mb-4">4. Financial Terms</h3>
+                <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">4. Financial Terms</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <InputField label="Payment Terms" value={custForm.paymentTerms} onChange={(e: any) => setCustForm({...custForm, paymentTerms: e.target.value})} placeholder="e.g. Net 30, Cash on Delivery" required />
                   <InputField label="Credit Limit (PKR)" value={custForm.creditLimit} onChange={(e: any) => setCustForm({...custForm, creditLimit: e.target.value})} placeholder="e.g. 500,000" required />
@@ -595,9 +595,9 @@ export default function SalesDashboard() {
               </div>
 
             </form>
-            <div className="p-6 border-t border-gray-800 bg-gray-950 flex justify-end gap-3 rounded-b-xl">
-              <button type="button" onClick={() => setIsCustModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors font-medium">Cancel</button>
-              <button type="submit" onClick={handleSaveCust} className="px-6 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium flex items-center gap-2 shadow-lg shadow-blue-500/20 transition-colors"><Save className="h-4 w-4" /> Save Customer</button>
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3 rounded-b-xl">
+              <button type="button" onClick={() => setIsCustModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 transition-colors font-medium shadow-sm">Cancel</button>
+              <button type="submit" onClick={handleSaveCust} className="px-6 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center gap-2 shadow-sm transition-colors"><Save className="h-4 w-4" /> Save Customer</button>
             </div>
           </div>
         </div>
@@ -611,30 +611,30 @@ export default function SalesDashboard() {
 function SidebarButton({ id, active, onClick, icon, label }: { id: string, active: string, onClick: (id: string) => void, icon: React.ReactNode, label: string }) {
   const isActive = active === id;
   return (
-    <button onClick={() => onClick(id)} className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-emerald-600/10 text-emerald-400 border border-emerald-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}>{icon}{label}</button>
+    <button onClick={() => onClick(id)} className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-emerald-50 text-emerald-600 border border-emerald-200" : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"}`}>{icon}{label}</button>
   );
 }
 
 function StatCard({ title, value, icon, alert }: { title: string, value: string, icon: React.ReactNode, alert?: boolean }) {
   return (
-    <div className={`bg-gray-900 border ${alert ? "border-red-500/30" : "border-gray-800"} p-5 rounded-xl flex flex-col justify-between hover:border-gray-700 transition-colors`}>
+    <div className={`bg-white border ${alert ? "border-red-500/30" : "border-gray-200"} p-5 rounded-xl flex flex-col justify-between hover:border-gray-300 transition-colors shadow-sm`}>
       <div className="flex justify-between items-start mb-2">
-        <p className="text-sm font-medium text-gray-400">{title}</p>
-        <div className="bg-gray-950 p-2 rounded-lg border border-gray-800">{icon}</div>
+        <p className="text-sm font-medium text-gray-500">{title}</p>
+        <div className="bg-gray-50 p-2 rounded-lg border border-gray-200">{icon}</div>
       </div>
-      <h3 className="text-3xl font-bold text-white tracking-tight">{value}</h3>
+      <h3 className="text-3xl font-bold text-gray-900 tracking-tight">{value}</h3>
     </div>
   );
 }
 
 function TopListItem({ rank, name, value, rev }: { rank: string, name: string, value: string, rev: string }) {
   return (
-    <li className="flex items-center justify-between bg-gray-950 p-4 rounded-lg border border-gray-800">
+    <li className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
       <div className="flex items-center gap-4">
-        <span className="text-gray-500 font-bold text-lg w-4">{rank}</span>
-        <div><p className="text-white font-medium text-sm">{name}</p><p className="text-gray-500 text-xs mt-0.5">{value}</p></div>
+        <span className="text-gray-400 font-bold text-lg w-4">{rank}</span>
+        <div><p className="text-gray-900 font-medium text-sm">{name}</p><p className="text-gray-500 text-xs mt-0.5">{value}</p></div>
       </div>
-      <span className="text-emerald-400 font-bold text-sm">{rev}</span>
+      <span className="text-emerald-600 font-bold text-sm">{rev}</span>
     </li>
   );
 }
@@ -642,12 +642,12 @@ function TopListItem({ rank, name, value, rev }: { rank: string, name: string, v
 // Chart Sub-Components
 function DistributionItem({ color, label, value, count }: { color: string, label: string, value: string, count: string }) {
   return (
-    <div className="flex items-center gap-3 bg-gray-950 p-3 rounded-lg border border-gray-800">
+    <div className="flex items-center gap-3 bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
       <div className={`h-3 w-3 rounded-full ${color}`}></div>
       <div className="flex-1">
-        <p className="text-xs font-medium text-gray-300">{label}</p>
+        <p className="text-xs font-medium text-gray-700">{label}</p>
         <div className="flex justify-between items-center mt-1">
-          <span className="text-sm font-bold text-white">{value}</span>
+          <span className="text-sm font-bold text-gray-900">{value}</span>
           <span className="text-xs text-gray-500">{count}</span>
         </div>
       </div>
@@ -657,11 +657,11 @@ function DistributionItem({ color, label, value, count }: { color: string, label
 
 function WorkflowNode({ icon, title, desc, color }: { icon: React.ReactNode, title: string, desc: string, color: string }) {
   return (
-    <div className="flex flex-col items-center z-10 bg-gray-900">
-      <div className={`bg-${color}-500/10 border border-${color}-500/30 p-4 rounded-xl mb-3 shadow-[0_0_15px_rgba(var(--color-${color}-500),0.15)]`}>
+    <div className="flex flex-col items-center z-10 bg-white">
+      <div className={`bg-${color}-50 border border-${color}-200 p-4 rounded-xl mb-3`}>
         {icon}
       </div>
-      <span className="text-sm font-bold text-white">{title}</span>
+      <span className="text-sm font-bold text-gray-900">{title}</span>
       {desc && <span className="text-xs text-gray-500 mt-1 text-center max-w-[100px]">{desc}</span>}
     </div>
   );
@@ -670,8 +670,8 @@ function WorkflowNode({ icon, title, desc, color }: { icon: React.ReactNode, tit
 function WorkflowArrow() {
   return (
     <div className="flex-1 flex items-center px-2 -mt-8">
-      <div className="h-px bg-gray-700 flex-1 relative"></div>
-      <ArrowRight className="h-4 w-4 text-gray-600 -ml-1" />
+      <div className="h-px bg-gray-300 flex-1 relative"></div>
+      <ArrowRight className="h-4 w-4 text-gray-400 -ml-1" />
     </div>
   );
 }
@@ -679,8 +679,8 @@ function WorkflowArrow() {
 function InputField({ label, name, value, type = "text", onChange, required, placeholder }: { label: string, name?: string, value: string, type?: string, onChange: any, required?: boolean, placeholder?: string }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-xs font-medium text-gray-400">{label} {required && <span className="text-red-500">*</span>}</label>
-      <input type={type} name={name} value={value} onChange={onChange} required={required} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-all" placeholder={placeholder} />
+      <label className="text-xs font-medium text-gray-600">{label} {required && <span className="text-red-500">*</span>}</label>
+      <input type={type} name={name} value={value} onChange={onChange} required={required} className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-500 transition-all shadow-sm" placeholder={placeholder} />
     </div>
   );
 }

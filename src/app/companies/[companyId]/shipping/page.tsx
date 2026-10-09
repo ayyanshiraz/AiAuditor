@@ -177,12 +177,12 @@ export default function ShippingDashboard() {
   // Utilities
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Delivered": return "bg-green-500/10 text-green-500 border-green-500/20";
-      case "In Transit": return "bg-blue-500/10 text-blue-500 border-blue-500/20";
-      case "Ready to Ship": return "bg-purple-500/10 text-purple-400 border-purple-500/20";
-      case "Delayed": return "bg-yellow-500/10 text-yellow-500 border-yellow-500/20";
-      case "Returned": return "bg-red-500/10 text-red-500 border-red-500/20";
-      default: return "bg-gray-500/10 text-gray-400 border-gray-500/20";
+      case "Delivered": return "bg-green-50 text-green-700 border-green-200";
+      case "In Transit": return "bg-blue-50 text-blue-700 border-blue-200";
+      case "Ready to Ship": return "bg-purple-50 text-purple-700 border-purple-200";
+      case "Delayed": return "bg-yellow-50 text-yellow-700 border-yellow-200";
+      case "Returned": return "bg-red-50 text-red-700 border-red-200";
+      default: return "bg-gray-100 text-gray-700 border-gray-200";
     }
   };
 
@@ -199,16 +199,16 @@ export default function ShippingDashboard() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-[var(--background)] overflow-hidden relative">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50 overflow-hidden relative">
       
       {/* Sidebar Navigation */}
-      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0 z-20">
-        <div className="p-4 md:p-6 border-b border-gray-800">
-          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 bg-white flex flex-col flex-shrink-0 z-20">
+        <div className="p-4 md:p-6 border-b border-gray-200">
+          <a href="." className="text-gray-500 hover:text-gray-900 transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
             ← Back to Modules
           </a>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <Truck className="h-5 w-5 text-purple-500" /> Shipping
+          <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+            <Truck className="h-5 w-5 text-purple-600" /> Shipping
           </h2>
         </div>
         
@@ -221,39 +221,39 @@ export default function ShippingDashboard() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0a]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
         <div className="max-w-7xl mx-auto pb-12">
 
           {/* --- Tab Content: Dashboard & Workflow --- */}
           {activeTab === "dashboard" && (
             <div className="space-y-8">
               <div>
-                <h1 className="text-2xl font-bold text-white">Shipping Logistics Dashboard</h1>
-                <p className="text-gray-400 text-sm mt-1">Real-time tracking of outbound logistics and delivery operations.</p>
+                <h1 className="text-2xl font-bold text-gray-900">Shipping Logistics Dashboard</h1>
+                <p className="text-gray-500 text-sm mt-1">Real-time tracking of outbound logistics and delivery operations.</p>
               </div>
 
               {/* Core Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <StatCard title="Pending Shipments" value="14" icon={<Clock className="h-5 w-5 text-gray-400" />} />
-                <StatCard title="Ready to Ship" value="8" icon={<Box className="h-5 w-5 text-purple-400" />} />
-                <StatCard title="In Transit" value="26" icon={<Truck className="h-5 w-5 text-blue-500" />} />
-                <StatCard title="Delivered (MTD)" value="142" icon={<CheckCircle className="h-5 w-5 text-green-500" />} />
-                <StatCard title="Delayed" value="3" icon={<AlertTriangle className="h-5 w-5 text-yellow-500" />} alert />
-                <StatCard title="Returned" value="2" icon={<RotateCcw className="h-5 w-5 text-red-500" />} alert />
-                <StatCard title="Shipping Cost (MTD)" value="PKR 85.4K" icon={<DollarSign className="h-5 w-5 text-emerald-500" />} />
-                <StatCard title="On-Time Rate" value="94.2%" icon={<Activity className="h-5 w-5 text-cyan-500" />} />
+                <StatCard title="Pending Shipments" value="14" icon={<Clock className="h-5 w-5 text-gray-500" />} />
+                <StatCard title="Ready to Ship" value="8" icon={<Box className="h-5 w-5 text-purple-600" />} />
+                <StatCard title="In Transit" value="26" icon={<Truck className="h-5 w-5 text-blue-600" />} />
+                <StatCard title="Delivered (MTD)" value="142" icon={<CheckCircle className="h-5 w-5 text-green-600" />} />
+                <StatCard title="Delayed" value="3" icon={<AlertTriangle className="h-5 w-5 text-yellow-600" />} alert />
+                <StatCard title="Returned" value="2" icon={<RotateCcw className="h-5 w-5 text-red-600" />} alert />
+                <StatCard title="Shipping Cost (MTD)" value="PKR 85.4K" icon={<DollarSign className="h-5 w-5 text-emerald-600" />} />
+                <StatCard title="On-Time Rate" value="94.2%" icon={<Activity className="h-5 w-5 text-cyan-600" />} />
               </div>
 
               {/* Charts & Graphs Section */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-purple-500" /> Shipping Volume Trend
+                    <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-purple-600" /> Shipping Volume Trend
                     </h2>
-                    <span className="text-xs font-medium bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded-full">+8.2% Growth</span>
+                    <span className="text-xs font-medium bg-emerald-50 text-emerald-600 border border-emerald-200 px-2 py-1 rounded-full">+8.2% Growth</span>
                   </div>
-                  <div className="flex items-end justify-between h-48 gap-2 mt-4 pt-6 border-b border-gray-800 pb-2">
+                  <div className="flex items-end justify-between h-48 gap-2 mt-4 pt-6 border-b border-gray-200 pb-2">
                     {[
                       { month: "May", height: "40%", val: "320" }, { month: "Jun", height: "55%", val: "450" },
                       { month: "Jul", height: "45%", val: "380" }, { month: "Aug", height: "70%", val: "590" },
@@ -261,8 +261,8 @@ export default function ShippingDashboard() {
                     ].map((bar, i) => (
                       <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
-                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">{bar.val}</span>
-                          <div className="w-full max-w-[3rem] bg-purple-600/40 hover:bg-purple-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
+                          <span className="absolute -top-8 text-xs font-semibold text-gray-900 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity bg-white border border-gray-200 shadow-md px-2 py-1 rounded">{bar.val}</span>
+                          <div className="w-full max-w-[3rem] bg-purple-100 hover:bg-purple-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
                         </div>
                         <span className="text-xs text-gray-500 mt-3">{bar.month}</span>
                       </div>
@@ -270,16 +270,16 @@ export default function ShippingDashboard() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-                  <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-6">
-                    <Activity className="h-5 w-5 text-blue-500" /> Current Status Distribution
+                <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+                  <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2 mb-6">
+                    <Activity className="h-5 w-5 text-blue-600" /> Current Status Distribution
                   </h2>
                   <div className="space-y-6">
-                    <div className="w-full h-8 flex rounded-md overflow-hidden bg-gray-800">
+                    <div className="w-full h-8 flex rounded-md overflow-hidden bg-gray-100 border border-gray-200">
                       <div className="h-full bg-green-500" style={{ width: "65%" }} title="Delivered"></div>
                       <div className="h-full bg-blue-500" style={{ width: "15%" }} title="In Transit"></div>
                       <div className="h-full bg-purple-500" style={{ width: "10%" }} title="Ready to Ship"></div>
-                      <div className="h-full bg-gray-500" style={{ width: "6%" }} title="Pending"></div>
+                      <div className="h-full bg-gray-400" style={{ width: "6%" }} title="Pending"></div>
                       <div className="h-full bg-yellow-500" style={{ width: "2%" }} title="Delayed"></div>
                       <div className="h-full bg-red-500" style={{ width: "2%" }} title="Returned"></div>
                     </div>
@@ -287,7 +287,7 @@ export default function ShippingDashboard() {
                       <DistributionItem color="bg-green-500" label="Delivered" value="65%" count="142" />
                       <DistributionItem color="bg-blue-500" label="In Transit" value="15%" count="26" />
                       <DistributionItem color="bg-purple-500" label="Ready" value="10%" count="8" />
-                      <DistributionItem color="bg-gray-500" label="Pending" value="6%" count="14" />
+                      <DistributionItem color="bg-gray-400" label="Pending" value="6%" count="14" />
                       <DistributionItem color="bg-yellow-500" label="Delayed" value="2%" count="3" />
                       <DistributionItem color="bg-red-500" label="Returned" value="2%" count="2" />
                     </div>
@@ -296,20 +296,20 @@ export default function ShippingDashboard() {
               </div>
 
               {/* Delivery Workflow Flowchart */}
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 overflow-x-auto mt-8">
-                <h2 className="text-lg font-bold text-white mb-8">Standard Shipping Workflow</h2>
+              <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-8 overflow-x-auto mt-8">
+                <h2 className="text-lg font-bold text-gray-900 mb-8">Standard Shipping Workflow</h2>
                 <div className="flex items-center justify-between min-w-[900px] py-4">
-                  <WorkflowNode icon={<ClipboardList className="h-6 w-6 text-indigo-400" />} title="Sales Order" desc="Order Confirmed" color="indigo" />
+                  <WorkflowNode icon={<ClipboardList className="h-6 w-6 text-indigo-600" />} title="Sales Order" desc="Order Confirmed" color="indigo" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Search className="h-6 w-6 text-cyan-400" />} title="Pick" desc="Locate in Warehouse" color="cyan" />
+                  <WorkflowNode icon={<Search className="h-6 w-6 text-cyan-600" />} title="Pick" desc="Locate in Warehouse" color="cyan" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Box className="h-6 w-6 text-purple-400" />} title="Pack" desc="Boxing & Weighing" color="purple" />
+                  <WorkflowNode icon={<Box className="h-6 w-6 text-purple-600" />} title="Pack" desc="Boxing & Weighing" color="purple" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Home className="h-6 w-6 text-gray-400" />} title="Ship" desc="Handover to Carrier" color="gray" />
+                  <WorkflowNode icon={<Home className="h-6 w-6 text-gray-500" />} title="Ship" desc="Handover to Carrier" color="gray" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<Truck className="h-6 w-6 text-blue-400" />} title="In Transit" desc="Out for Delivery" color="blue" />
+                  <WorkflowNode icon={<Truck className="h-6 w-6 text-blue-600" />} title="In Transit" desc="Out for Delivery" color="blue" />
                   <WorkflowArrow />
-                  <WorkflowNode icon={<CheckCircle className="h-6 w-6 text-green-400" />} title="Delivered" desc="Received by Customer" color="green" />
+                  <WorkflowNode icon={<CheckCircle className="h-6 w-6 text-green-600" />} title="Delivered" desc="Received by Customer" color="green" />
                 </div>
               </div>
             </div>
@@ -317,48 +317,48 @@ export default function ShippingDashboard() {
 
           {/* --- Tab Content: Shipments --- */}
           {activeTab === "shipments" && (
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6 flex flex-col min-h-[85vh]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Master Shipments Ledger</h2>
-                  <p className="text-gray-400 text-sm mt-1">Manage, track, and update all dispatch records and live workflow tracking.</p>
+                  <h2 className="text-xl font-bold text-gray-900">Master Shipments Ledger</h2>
+                  <p className="text-gray-500 text-sm mt-1">Manage, track, and update all dispatch records and live workflow tracking.</p>
                 </div>
                 <div className="flex gap-3">
-                  <button className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-700">
+                  <button className="bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-300 shadow-sm">
                     <Filter className="h-4 w-4" /> Filter
                   </button>
-                  <button onClick={() => handleOpenModal()} className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-purple-500/20">
+                  <button onClick={() => handleOpenModal()} className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-sm">
                     <Plus className="h-4 w-4" /> New Shipment
                   </button>
                 </div>
               </div>
               
-              <div className="overflow-auto flex-1 rounded-lg border border-gray-800 bg-gray-950/50">
-                <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
-                  <thead className="text-xs text-gray-400 uppercase bg-gray-900 sticky top-0 z-10 border-b border-gray-800">
+              <div className="overflow-auto flex-1 rounded-lg border border-gray-200 bg-white">
+                <table className="w-full text-left text-sm text-gray-700 whitespace-nowrap">
+                  <thead className="text-xs text-gray-500 uppercase bg-gray-50 sticky top-0 z-10 border-b border-gray-200">
                     <tr>
-                      <th className="px-4 py-4 font-medium sticky left-0 bg-gray-900 z-20">Shipment Info</th>
+                      <th className="px-4 py-4 font-medium sticky left-0 bg-gray-50 z-20">Shipment Info</th>
                       <th className="px-4 py-4 font-medium">Logistics Details</th>
                       <th className="px-4 py-4 font-medium">Timeline</th>
                       <th className="px-4 py-4 font-medium">Package Specs</th>
                       <th className="px-4 py-4 font-medium">Status & Workflow</th>
-                      <th className="px-4 py-4 font-medium text-right sticky right-0 bg-gray-900 z-20">Actions</th>
+                      <th className="px-4 py-4 font-medium text-right sticky right-0 bg-gray-50 z-20">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-800/60">
+                  <tbody className="divide-y divide-gray-200">
                     {shipments.length === 0 ? (
                       <tr><td colSpan={6} className="px-4 py-12 text-center text-gray-500">No shipments found.</td></tr>
                     ) : (
                       shipments.map((ship) => (
-                        <tr key={ship.id} className="hover:bg-gray-800/40 transition-colors group">
-                          <td className="px-4 py-4 sticky left-0 bg-gray-950 group-hover:bg-gray-800/40 z-10">
-                            <div className="font-bold text-white">{ship.shipmentNumber}</div>
-                            <div className="text-xs text-gray-400 mt-1">SO: {ship.salesOrder}</div>
-                            <div className="text-xs text-blue-400 mt-0.5">{ship.customer}</div>
+                        <tr key={ship.id} className="hover:bg-gray-50 transition-colors group">
+                          <td className="px-4 py-4 sticky left-0 bg-white group-hover:bg-gray-50 z-10">
+                            <div className="font-bold text-gray-900">{ship.shipmentNumber}</div>
+                            <div className="text-xs text-gray-500 mt-1">SO: {ship.salesOrder}</div>
+                            <div className="text-xs text-blue-600 mt-0.5">{ship.customer}</div>
                           </td>
                           <td className="px-4 py-4">
-                            <div className="flex items-center gap-1 font-medium text-gray-200"><Truck className="h-3 w-3 text-gray-500" /> {ship.carrier}</div>
-                            <div className="text-xs text-gray-400 mt-1">Method: {ship.shippingMethod}</div>
+                            <div className="flex items-center gap-1 font-medium text-gray-800"><Truck className="h-3 w-3 text-gray-400" /> {ship.carrier}</div>
+                            <div className="text-xs text-gray-500 mt-1">Method: {ship.shippingMethod}</div>
                             <div className="text-xs text-gray-500 mt-0.5 font-mono">Track: {ship.trackingNumber}</div>
                           </td>
                           <td className="px-4 py-4">
@@ -368,8 +368,8 @@ export default function ShippingDashboard() {
                           </td>
                           <td className="px-4 py-4">
                             <div>{ship.packageCount} Packages</div>
-                            <div className="text-xs text-gray-400 mt-1">Weight: {ship.weight}</div>
-                            <div className="text-xs text-emerald-500 mt-0.5">Cost: PKR {ship.shippingCost}</div>
+                            <div className="text-xs text-gray-500 mt-1">Weight: {ship.weight}</div>
+                            <div className="text-xs text-emerald-600 mt-0.5">Cost: PKR {ship.shippingCost}</div>
                           </td>
                           <td className="px-4 py-4 min-w-[220px]">
                             <div className="mb-3">
@@ -382,17 +382,17 @@ export default function ShippingDashboard() {
                                 const isActive = idx <= getWorkflowIndex(ship.status);
                                 return (
                                   <div key={step} className="flex-1 flex flex-col gap-1" title={step}>
-                                    <div className={`h-1.5 w-full rounded-full ${isActive ? "bg-purple-500" : "bg-gray-700"}`}></div>
-                                    <span className={`text-[9px] font-medium text-center ${isActive ? "text-purple-300" : "text-gray-500"}`}>{step}</span>
+                                    <div className={`h-1.5 w-full rounded-full ${isActive ? "bg-purple-600" : "bg-gray-200"}`}></div>
+                                    <span className={`text-[9px] font-medium text-center ${isActive ? "text-purple-700" : "text-gray-400"}`}>{step}</span>
                                   </div>
                                 );
                               })}
                             </div>
                           </td>
-                          <td className="px-4 py-4 text-right sticky right-0 bg-gray-950 group-hover:bg-gray-800/40 z-10">
+                          <td className="px-4 py-4 text-right sticky right-0 bg-white group-hover:bg-gray-50 z-10">
                             <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                              <button onClick={() => handleOpenModal(ship)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded"><Edit className="h-4 w-4" /></button>
-                              <button onClick={() => handleDelete(ship.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded"><Trash2 className="h-4 w-4" /></button>
+                              <button onClick={() => handleOpenModal(ship)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-purple-50 text-gray-600 hover:text-purple-600 rounded"><Edit className="h-4 w-4" /></button>
+                              <button onClick={() => handleDelete(ship.id)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-red-50 text-gray-600 hover:text-red-600 rounded"><Trash2 className="h-4 w-4" /></button>
                             </div>
                           </td>
                         </tr>
@@ -406,20 +406,20 @@ export default function ShippingDashboard() {
 
           {/* --- Tab Content: Pick & Pack --- */}
           {activeTab === "pickpack" && (
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6 flex flex-col min-h-[85vh]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Pick & Pack Operations</h2>
-                  <p className="text-gray-400 text-sm mt-1">Manage warehouse item retrieval and packaging assignments.</p>
+                  <h2 className="text-xl font-bold text-gray-900">Pick & Pack Operations</h2>
+                  <p className="text-gray-500 text-sm mt-1">Manage warehouse item retrieval and packaging assignments.</p>
                 </div>
-                <button onClick={() => handleOpenPickModal()} className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-purple-500/20">
+                <button onClick={() => handleOpenPickModal()} className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-sm">
                   <Plus className="h-4 w-4" /> Add Pick Task
                 </button>
               </div>
 
-              <div className="overflow-auto flex-1 rounded-lg border border-gray-800 bg-gray-950/50">
-                <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
-                  <thead className="bg-gray-900 border-b border-gray-800 text-xs text-gray-400 uppercase sticky top-0 z-10">
+              <div className="overflow-auto flex-1 rounded-lg border border-gray-200 bg-white">
+                <table className="w-full text-left text-sm text-gray-700 whitespace-nowrap">
+                  <thead className="bg-gray-50 border-b border-gray-200 text-xs text-gray-500 uppercase sticky top-0 z-10">
                     <tr>
                       <th className="px-4 py-4 font-medium">Part Details</th>
                       <th className="px-4 py-4 font-medium">Fulfillment Status</th>
@@ -428,7 +428,7 @@ export default function ShippingDashboard() {
                       <th className="px-4 py-4 font-medium text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-800/60">
+                  <tbody className="divide-y divide-gray-200">
                     {picks.length === 0 ? (
                       <tr><td colSpan={5} className="px-4 py-12 text-center text-gray-500">No pick tasks available.</td></tr>
                     ) : (
@@ -438,36 +438,36 @@ export default function ShippingDashboard() {
                         const percent = required > 0 ? (picked / required) * 100 : 0;
 
                         return (
-                          <tr key={item.id} className="hover:bg-gray-800/40 transition-colors group">
+                          <tr key={item.id} className="hover:bg-gray-50 transition-colors group">
                             <td className="px-4 py-4">
-                              <div className="font-bold text-white">{item.partNumber}</div>
-                              <div className="text-xs text-gray-400">{item.partName}</div>
+                              <div className="font-bold text-gray-900">{item.partNumber}</div>
+                              <div className="text-xs text-gray-500">{item.partName}</div>
                             </td>
                             <td className="px-4 py-4">
                               <div className="flex items-center gap-3">
-                                <span className="font-bold text-white">{item.pickedQty} <span className="text-gray-500 font-normal">/ {item.requiredQty}</span></span>
+                                <span className="font-bold text-gray-900">{item.pickedQty} <span className="text-gray-500 font-normal">/ {item.requiredQty}</span></span>
                                 {picked >= required && required > 0 ? (
-                                  <CheckCircle className="h-4 w-4 text-green-500" />
+                                  <CheckCircle className="h-4 w-4 text-green-600" />
                                 ) : (
-                                  <div className="h-2 w-16 bg-gray-800 rounded-full overflow-hidden">
-                                    <div className="h-full bg-purple-500 transition-all duration-300" style={{ width: `${Math.min(percent, 100)}%` }}></div>
+                                  <div className="h-2 w-16 bg-gray-200 rounded-full overflow-hidden">
+                                    <div className="h-full bg-purple-600 transition-all duration-300" style={{ width: `${Math.min(percent, 100)}%` }}></div>
                                   </div>
                                 )}
                               </div>
                             </td>
-                            <td className="px-4 py-4 font-mono text-xs text-gray-400">
+                            <td className="px-4 py-4 font-mono text-xs text-gray-500">
                               <div className="flex items-center gap-2">
-                                <MapPin className="h-3 w-3 text-gray-500" /> {item.location}
+                                <MapPin className="h-3 w-3 text-gray-400" /> {item.location}
                               </div>
                             </td>
                             <td className="px-4 py-4">
-                              <div className="text-gray-300">{item.packageBox}</div>
+                              <div className="text-gray-700">{item.packageBox}</div>
                               <div className="text-xs text-gray-500 mt-1">{item.weight} • {item.dimensions}</div>
                             </td>
                             <td className="px-4 py-4 text-right">
                               <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                                <button onClick={() => handleOpenPickModal(item)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded"><Edit className="h-4 w-4" /></button>
-                                <button onClick={() => handleDeletePick(item.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded"><Trash2 className="h-4 w-4" /></button>
+                                <button onClick={() => handleOpenPickModal(item)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-purple-50 text-gray-600 hover:text-purple-600 rounded"><Edit className="h-4 w-4" /></button>
+                                <button onClick={() => handleDeletePick(item.id)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-red-50 text-gray-600 hover:text-red-600 rounded"><Trash2 className="h-4 w-4" /></button>
                               </div>
                             </td>
                           </tr>
@@ -482,20 +482,20 @@ export default function ShippingDashboard() {
 
           {/* --- Tab Content: Returns Management (FULLY FUNCTIONAL) --- */}
           {activeTab === "returns" && (
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
+            <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-6 flex flex-col min-h-[85vh]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Returns Management</h2>
-                  <p className="text-gray-400 text-sm mt-1">Process returned shipments, evaluate item conditions, and assign Restock or Scrap actions.</p>
+                  <h2 className="text-xl font-bold text-gray-900">Returns Management</h2>
+                  <p className="text-gray-500 text-sm mt-1">Process returned shipments, evaluate item conditions, and assign Restock or Scrap actions.</p>
                 </div>
-                <button onClick={() => handleOpenReturnModal()} className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-purple-500/20">
+                <button onClick={() => handleOpenReturnModal()} className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-sm">
                   <Plus className="h-4 w-4" /> Log Return Shipment
                 </button>
               </div>
 
-              <div className="overflow-auto flex-1 rounded-lg border border-gray-800 bg-gray-950/50">
-                <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
-                  <thead className="bg-gray-900 border-b border-gray-800 text-xs text-gray-400 uppercase sticky top-0 z-10">
+              <div className="overflow-auto flex-1 rounded-lg border border-gray-200 bg-white">
+                <table className="w-full text-left text-sm text-gray-700 whitespace-nowrap">
+                  <thead className="bg-gray-50 border-b border-gray-200 text-xs text-gray-500 uppercase sticky top-0 z-10">
                     <tr>
                       <th className="px-6 py-4 font-medium">Return Shipment</th>
                       <th className="px-6 py-4 font-medium">Reason</th>
@@ -505,31 +505,31 @@ export default function ShippingDashboard() {
                       <th className="px-6 py-4 font-medium text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-800/60">
+                  <tbody className="divide-y divide-gray-200">
                     {returns.length === 0 ? (
                       <tr><td colSpan={6} className="px-6 py-12 text-center text-gray-500">No return records found.</td></tr>
                     ) : (
                       returns.map((ret) => (
-                        <tr key={ret.id} className="hover:bg-gray-800/40 transition-colors group">
-                          <td className="px-6 py-4 font-bold text-white flex items-center gap-2">
-                            <RotateCcw className="h-4 w-4 text-purple-400" /> {ret.returnShipment}
+                        <tr key={ret.id} className="hover:bg-gray-50 transition-colors group">
+                          <td className="px-6 py-4 font-bold text-gray-900 flex items-center gap-2">
+                            <RotateCcw className="h-4 w-4 text-purple-600" /> {ret.returnShipment}
                           </td>
-                          <td className="px-6 py-4 text-gray-400">{ret.reason}</td>
-                          <td className="px-6 py-4 font-bold text-white">{ret.returnedQty} Units</td>
+                          <td className="px-6 py-4 text-gray-600">{ret.reason}</td>
+                          <td className="px-6 py-4 font-bold text-gray-900">{ret.returnedQty} Units</td>
                           <td className="px-6 py-4">
-                            <span className={`px-2.5 py-1 rounded text-xs font-semibold border ${ret.condition === "Good" ? "bg-green-500/10 text-green-400 border-green-500/20" : ret.condition === "Damaged" ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" : "bg-red-500/10 text-red-400 border-red-500/20"}`}>
+                            <span className={`px-2.5 py-1 rounded text-xs font-semibold border ${ret.condition === "Good" ? "bg-green-50 text-green-700 border-green-200" : ret.condition === "Damaged" ? "bg-yellow-50 text-yellow-700 border-yellow-200" : "bg-red-50 text-red-700 border-red-200"}`}>
                               {ret.condition}
                             </span>
                           </td>
                           <td className="px-6 py-4">
-                            <span className={`px-2.5 py-1 rounded text-xs font-semibold border ${ret.action === "Restock" ? "bg-blue-500/10 text-blue-400 border-blue-500/20" : ret.action === "Scrap" ? "bg-orange-500/10 text-orange-400 border-orange-500/20" : "bg-purple-500/10 text-purple-400 border-purple-500/20"}`}>
+                            <span className={`px-2.5 py-1 rounded text-xs font-semibold border ${ret.action === "Restock" ? "bg-blue-50 text-blue-700 border-blue-200" : ret.action === "Scrap" ? "bg-orange-50 text-orange-700 border-orange-200" : "bg-purple-50 text-purple-700 border-purple-200"}`}>
                               {ret.action}
                             </span>
                           </td>
                           <td className="px-6 py-4 text-right">
                             <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
-                              <button onClick={() => handleOpenReturnModal(ret)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded"><Edit className="h-4 w-4" /></button>
-                              <button onClick={() => handleDeleteReturn(ret.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded"><Trash2 className="h-4 w-4" /></button>
+                              <button onClick={() => handleOpenReturnModal(ret)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-purple-50 text-gray-600 hover:text-purple-600 rounded"><Edit className="h-4 w-4" /></button>
+                              <button onClick={() => handleDeleteReturn(ret.id)} className="p-2 bg-gray-50 border border-gray-200 hover:bg-red-50 text-gray-600 hover:text-red-600 rounded"><Trash2 className="h-4 w-4" /></button>
                             </div>
                           </td>
                         </tr>
@@ -546,16 +546,16 @@ export default function ShippingDashboard() {
 
       {/* --- Shipment Modal --- */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-5xl flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h2 className="text-xl font-bold text-white">{editingId ? "Edit Shipment Details" : "Create New Shipment"}</h2>
-              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-white transition-colors"><X className="h-6 w-6" /></button>
+        <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-2xl w-full max-w-5xl flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900">{editingId ? "Edit Shipment Details" : "Create New Shipment"}</h2>
+              <button onClick={() => setIsModalOpen(false)} className="text-gray-500 hover:text-gray-900 transition-colors"><X className="h-6 w-6" /></button>
             </div>
             
             <form onSubmit={handleSave} className="overflow-y-auto p-6 space-y-8 flex-1 custom-scrollbar">
               <div>
-                <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4">1. Order & Customer Info</h3>
+                <h3 className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-4">1. Order & Customer Info</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <InputField label="Shipment Number" name="shipmentNumber" value={formData.shipmentNumber} onChange={handleInputChange} required />
                   <InputField label="Sales Order" name="salesOrder" value={formData.salesOrder} onChange={handleInputChange} required />
@@ -565,7 +565,7 @@ export default function ShippingDashboard() {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4">2. Logistics & Carrier</h3>
+                <h3 className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-4">2. Logistics & Carrier</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <InputField label="Shipping Date" name="shippingDate" type="date" value={formData.shippingDate} onChange={handleInputChange} required />
                   <InputField label="Expected Delivery Date" name="expectedDeliveryDate" type="date" value={formData.expectedDeliveryDate} onChange={handleInputChange} required />
@@ -573,8 +573,8 @@ export default function ShippingDashboard() {
                   <InputField label="Tracking Number" name="trackingNumber" value={formData.trackingNumber} onChange={handleInputChange} />
                   
                   <div className="flex flex-col gap-1 col-span-2">
-                    <label className="text-xs font-medium text-gray-400">Shipping Method</label>
-                    <select name="shippingMethod" value={formData.shippingMethod} onChange={handleInputChange} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500">
+                    <label className="text-xs font-medium text-gray-600">Shipping Method</label>
+                    <select name="shippingMethod" value={formData.shippingMethod} onChange={handleInputChange} className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-purple-500 shadow-sm">
                       <option value="">Select Method</option>
                       <option value="Standard Ground">Standard Ground</option>
                       <option value="Express Route">Express Route</option>
@@ -584,8 +584,8 @@ export default function ShippingDashboard() {
                   </div>
                   
                   <div className="flex flex-col gap-1 col-span-2">
-                    <label className="text-xs font-medium text-gray-400">Current Status</label>
-                    <select name="status" value={formData.status} onChange={handleInputChange} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500">
+                    <label className="text-xs font-medium text-gray-600">Current Status</label>
+                    <select name="status" value={formData.status} onChange={handleInputChange} className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-purple-500 shadow-sm">
                       <option value="Pending">Pending</option>
                       <option value="Ready to Ship">Ready to Ship</option>
                       <option value="In Transit">In Transit</option>
@@ -598,7 +598,7 @@ export default function ShippingDashboard() {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4">3. Package Specs & Financials</h3>
+                <h3 className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-4">3. Package Specs & Financials</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <InputField label="Package Count" name="packageCount" type="number" value={formData.packageCount} onChange={handleInputChange} />
                   <InputField label="Total Weight" name="weight" value={formData.weight} onChange={handleInputChange} placeholder="e.g., 45.2 kg" />
@@ -607,9 +607,9 @@ export default function ShippingDashboard() {
               </div>
             </form>
             
-            <div className="p-6 border-t border-gray-800 bg-gray-950 flex justify-end gap-3 rounded-b-xl">
-              <button type="button" onClick={() => setIsModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors font-medium">Cancel</button>
-              <button onClick={handleSave} className="px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white transition-colors font-medium flex items-center gap-2 shadow-lg shadow-purple-500/20">
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3 rounded-b-xl">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 transition-colors font-medium shadow-sm">Cancel</button>
+              <button onClick={handleSave} className="px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors font-medium flex items-center gap-2 shadow-sm">
                 <Save className="h-4 w-4" /> Save Shipment
               </button>
             </div>
@@ -619,11 +619,11 @@ export default function ShippingDashboard() {
 
       {/* --- Pick & Pack Modal --- */}
       {isPickModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-2xl flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h2 className="text-xl font-bold text-white">{editingPickId ? "Update Pick Task" : "Assign Pick Task"}</h2>
-              <button onClick={() => setIsPickModalOpen(false)} className="text-gray-400 hover:text-white transition-colors"><X className="h-6 w-6" /></button>
+        <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-2xl w-full max-w-2xl flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900">{editingPickId ? "Update Pick Task" : "Assign Pick Task"}</h2>
+              <button onClick={() => setIsPickModalOpen(false)} className="text-gray-500 hover:text-gray-900 transition-colors"><X className="h-6 w-6" /></button>
             </div>
             
             <form onSubmit={handleSavePick} className="overflow-y-auto p-6 space-y-6 flex-1 custom-scrollbar">
@@ -643,9 +643,9 @@ export default function ShippingDashboard() {
               </div>
             </form>
             
-            <div className="p-6 border-t border-gray-800 bg-gray-950 flex justify-end gap-3 rounded-b-xl">
-              <button type="button" onClick={() => setIsPickModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors font-medium">Cancel</button>
-              <button onClick={handleSavePick} className="px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white transition-colors font-medium flex items-center gap-2 shadow-lg shadow-purple-500/20">
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3 rounded-b-xl">
+              <button type="button" onClick={() => setIsPickModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 transition-colors font-medium shadow-sm">Cancel</button>
+              <button onClick={handleSavePick} className="px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors font-medium flex items-center gap-2 shadow-sm">
                 <Save className="h-4 w-4" /> Save Pick Task
               </button>
             </div>
@@ -655,11 +655,11 @@ export default function ShippingDashboard() {
 
       {/* --- Returns Management Modal --- */}
       {isReturnModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-lg flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h2 className="text-xl font-bold text-white">{editingReturnId ? "Edit Return Record" : "Log Return Shipment"}</h2>
-              <button onClick={() => setIsReturnModalOpen(false)} className="text-gray-400 hover:text-white transition-colors"><X className="h-6 w-6" /></button>
+        <div className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-2xl w-full max-w-lg flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900">{editingReturnId ? "Edit Return Record" : "Log Return Shipment"}</h2>
+              <button onClick={() => setIsReturnModalOpen(false)} className="text-gray-500 hover:text-gray-900 transition-colors"><X className="h-6 w-6" /></button>
             </div>
             
             <form onSubmit={handleSaveReturn} className="overflow-y-auto p-6 space-y-4 flex-1 custom-scrollbar">
@@ -669,8 +669,8 @@ export default function ShippingDashboard() {
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-medium text-gray-400">Condition *</label>
-                  <select name="condition" value={returnForm.condition} onChange={handleReturnInputChange} required className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500">
+                  <label className="text-xs font-medium text-gray-600">Condition *</label>
+                  <select name="condition" value={returnForm.condition} onChange={handleReturnInputChange} required className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-purple-500 shadow-sm">
                     <option value="Good">Good</option>
                     <option value="Damaged">Damaged</option>
                     <option value="Defective">Defective</option>
@@ -678,8 +678,8 @@ export default function ShippingDashboard() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-medium text-gray-400">Restock / Scrap Action *</label>
-                  <select name="action" value={returnForm.action} onChange={handleReturnInputChange} required className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500">
+                  <label className="text-xs font-medium text-gray-600">Restock / Scrap Action *</label>
+                  <select name="action" value={returnForm.action} onChange={handleReturnInputChange} required className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-purple-500 shadow-sm">
                     <option value="Restock">Restock</option>
                     <option value="Scrap">Scrap</option>
                     <option value="Pending Inspection">Pending Inspection</option>
@@ -688,9 +688,9 @@ export default function ShippingDashboard() {
               </div>
             </form>
             
-            <div className="p-6 border-t border-gray-800 bg-gray-950 flex justify-end gap-3 rounded-b-xl">
-              <button type="button" onClick={() => setIsReturnModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors font-medium">Cancel</button>
-              <button onClick={handleSaveReturn} className="px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white transition-colors font-medium flex items-center gap-2 shadow-lg shadow-purple-500/20">
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3 rounded-b-xl">
+              <button type="button" onClick={() => setIsReturnModalOpen(false)} className="px-6 py-2 rounded-lg text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 transition-colors font-medium shadow-sm">Cancel</button>
+              <button onClick={handleSaveReturn} className="px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors font-medium flex items-center gap-2 shadow-sm">
                 <Save className="h-4 w-4" /> Save Return Record
               </button>
             </div>
@@ -708,7 +708,7 @@ function SidebarButton({ id, active, onClick, icon, label }: { id: string, activ
   return (
     <button 
       onClick={() => onClick(id)}
-      className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-purple-600/10 text-purple-400 border border-purple-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}
+      className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-purple-50 text-purple-600 border border-purple-200" : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"}`}
     >
       {icon}
       {label}
@@ -718,24 +718,24 @@ function SidebarButton({ id, active, onClick, icon, label }: { id: string, activ
 
 function StatCard({ title, value, icon, alert }: { title: string, value: string, icon: React.ReactNode, alert?: boolean }) {
   return (
-    <div className={`bg-gray-900 border ${alert ? "border-red-500/30" : "border-gray-800"} p-5 rounded-xl flex flex-col justify-between hover:border-gray-700 transition-colors`}>
+    <div className={`bg-white border ${alert ? "border-red-500/30" : "border-gray-200"} p-5 rounded-xl flex flex-col justify-between hover:border-gray-300 transition-colors shadow-sm`}>
       <div className="flex justify-between items-start mb-2">
-        <p className="text-sm font-medium text-gray-400">{title}</p>
-        <div className="bg-gray-950 p-2 rounded-lg border border-gray-800">{icon}</div>
+        <p className="text-sm font-medium text-gray-500">{title}</p>
+        <div className="bg-gray-50 p-2 rounded-lg border border-gray-200">{icon}</div>
       </div>
-      <h3 className="text-3xl font-bold text-white tracking-tight">{value}</h3>
+      <h3 className="text-3xl font-bold text-gray-900 tracking-tight">{value}</h3>
     </div>
   );
 }
 
 function DistributionItem({ color, label, value, count }: { color: string, label: string, value: string, count: string }) {
   return (
-    <div className="flex items-center gap-3 bg-gray-950 p-3 rounded-lg border border-gray-800">
+    <div className="flex items-center gap-3 bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
       <div className={`h-3 w-3 rounded-full ${color}`}></div>
       <div className="flex-1">
-        <p className="text-xs font-medium text-gray-300">{label}</p>
+        <p className="text-xs font-medium text-gray-700">{label}</p>
         <div className="flex justify-between items-center mt-1">
-          <span className="text-sm font-bold text-white">{value}</span>
+          <span className="text-sm font-bold text-gray-900">{value}</span>
           <span className="text-xs text-gray-500">{count}</span>
         </div>
       </div>
@@ -746,10 +746,10 @@ function DistributionItem({ color, label, value, count }: { color: string, label
 function WorkflowNode({ icon, title, desc, color }: { icon: React.ReactNode, title: string, desc: string, color: string }) {
   return (
     <div className="flex flex-col items-center">
-      <div className={`bg-${color}-500/10 border border-${color}-500/30 p-4 rounded-xl mb-3 shadow-[0_0_15px_rgba(var(--color-${color}-500),0.15)]`}>
+      <div className={`bg-${color}-50 border border-${color}-200 p-4 rounded-xl mb-3`}>
         {icon}
       </div>
-      <span className="text-sm font-bold text-white">{title}</span>
+      <span className="text-sm font-bold text-gray-900">{title}</span>
       <span className="text-xs text-gray-500 mt-1 text-center max-w-[100px]">{desc}</span>
     </div>
   );
@@ -758,8 +758,8 @@ function WorkflowNode({ icon, title, desc, color }: { icon: React.ReactNode, tit
 function WorkflowArrow() {
   return (
     <div className="flex-1 flex items-center px-4 -mt-8">
-      <div className="h-px bg-gray-700 flex-1 relative"></div>
-      <ArrowRight className="h-4 w-4 text-gray-600 -ml-1" />
+      <div className="h-px bg-gray-300 flex-1 relative"></div>
+      <ArrowRight className="h-4 w-4 text-gray-400 -ml-1" />
     </div>
   );
 }
@@ -767,14 +767,14 @@ function WorkflowArrow() {
 function InputField({ label, name, value, type = "text", onChange, required, placeholder }: { label: string, name: string, value: string, type?: string, onChange: any, required?: boolean, placeholder?: string }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-xs font-medium text-gray-400">{label} {required && <span className="text-red-500">*</span>}</label>
+      <label className="text-xs font-medium text-gray-600">{label} {required && <span className="text-red-500">*</span>}</label>
       <input 
         type={type} 
         name={name} 
         value={value} 
         onChange={onChange}
         required={required}
-        className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500 transition-all"
+        className="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-purple-500 transition-all shadow-sm"
         placeholder={placeholder || `Enter ${label.toLowerCase()}`}
       />
     </div>
