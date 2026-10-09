@@ -390,12 +390,12 @@ export default function InventoryDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-[var(--background)] overflow-hidden relative">
+    <div className="flex flex-col md:flex-row h-screen bg-[var(--background)] overflow-hidden relative">
       
       {/* Sidebar Navigation */}
-      <div className="w-64 border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0">
-        <div className="p-6 border-b border-gray-800">
-          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-6 flex items-center gap-2">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0 z-20">
+        <div className="p-4 md:p-6 border-b border-gray-800">
+          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
             ← Back to Modules
           </a>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
@@ -403,17 +403,17 @@ export default function InventoryDashboard() {
           </h2>
         </div>
         
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<BarChart3 className="h-4 w-4" />} label="Dashboard" />
-          <SidebarButton id="parts" active={activeTab} onClick={setActiveTab} icon={<Package className="h-4 w-4" />} label="Parts & Products" />
-          <SidebarButton id="categories" active={activeTab} onClick={setActiveTab} icon={<LayoutGrid className="h-4 w-4" />} label="Categories" />
-          <SidebarButton id="transactions" active={activeTab} onClick={setActiveTab} icon={<ArrowRightLeft className="h-4 w-4" />} label="Transactions" />
-          <SidebarButton id="warehouse" active={activeTab} onClick={setActiveTab} icon={<Home className="h-4 w-4" />} label="Warehouse Operations" />
+        <nav className="flex overflow-x-auto md:flex-col md:flex-1 p-4 gap-2 md:gap-0 md:space-y-1 md:overflow-y-auto custom-scrollbar">
+          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<BarChart3 className="h-4 w-4 shrink-0" />} label="Dashboard" />
+          <SidebarButton id="parts" active={activeTab} onClick={setActiveTab} icon={<Package className="h-4 w-4 shrink-0" />} label="Parts & Products" />
+          <SidebarButton id="categories" active={activeTab} onClick={setActiveTab} icon={<LayoutGrid className="h-4 w-4 shrink-0" />} label="Categories" />
+          <SidebarButton id="transactions" active={activeTab} onClick={setActiveTab} icon={<ArrowRightLeft className="h-4 w-4 shrink-0" />} label="Transactions" />
+          <SidebarButton id="warehouse" active={activeTab} onClick={setActiveTab} icon={<Home className="h-4 w-4 shrink-0" />} label="Warehouse Operations" />
         </nav>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-8 bg-[#0a0a0a]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto pb-12">
 
           {/* Tab Content: Dashboard */}
@@ -453,7 +453,7 @@ export default function InventoryDashboard() {
                     ].map((bar, i) => (
                       <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
-                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">PKR {bar.val}</span>
+                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">PKR {bar.val}</span>
                           <div className="w-full max-w-[3rem] bg-blue-600/40 hover:bg-blue-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
                         </div>
                         <span className="text-xs text-gray-500 mt-3">{bar.month}</span>
@@ -543,7 +543,7 @@ export default function InventoryDashboard() {
           {/* Tab Content: Parts / Products */}
           {activeTab === "parts" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Master Parts List</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage all your products, components, and their properties.</p>
@@ -640,7 +640,7 @@ export default function InventoryDashboard() {
           {/* Tab Content: Categories */}
           {activeTab === "categories" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-8 pb-6 border-b border-gray-800">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 pb-6 border-b border-gray-800">
                 <div>
                   <h2 className="text-xl font-bold text-white">Product Categories</h2>
                   <p className="text-gray-400 text-sm mt-1">Hierarchical organization of all inventory items.</p>
@@ -689,7 +689,7 @@ export default function InventoryDashboard() {
                             cat.items.map((sub) => (
                               <div key={sub.id} className="group flex items-center gap-2 bg-gray-900 text-gray-300 text-sm pl-3 pr-1 py-1 rounded-md border border-gray-700 hover:border-gray-600 transition-colors">
                                 <span>{sub.name}</span>
-                                <div className="flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="flex items-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
                                   <button onClick={() => openSubModal(cat.id, sub)} className="p-1 text-gray-500 hover:text-blue-400 rounded">
                                     <Edit className="h-3 w-3" />
                                   </button>
@@ -712,7 +712,7 @@ export default function InventoryDashboard() {
           {/* Tab Content: Transactions */}
           {activeTab === "transactions" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Inventory Transactions</h2>
                   <p className="text-gray-400 text-sm mt-1">Track all stock in and stock out movements.</p>
@@ -764,7 +764,7 @@ export default function InventoryDashboard() {
                             <td className="px-4 py-4 font-bold text-white">{tx.quantity}</td>
                             <td className="px-4 py-4 text-gray-400">{tx.reference}</td>
                             <td className="px-4 py-4 text-right">
-                              <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
                                 <button onClick={() => handleOpenTxModal(tx)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded transition-colors" title="Edit">
                                   <Edit className="h-4 w-4" />
                                 </button>
@@ -786,19 +786,19 @@ export default function InventoryDashboard() {
           {/* Tab Content: Warehouse (FULLY FUNCTIONAL) */}
           {activeTab === "warehouse" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Warehouse Operations</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage physical infrastructure and internal stock flow.</p>
                 </div>
-                <div className="flex gap-2 bg-gray-950 p-1 rounded-lg border border-gray-800">
-                  <button onClick={() => setWhSubTab("infrastructure")} className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${whSubTab === "infrastructure" ? "bg-gray-800 text-white shadow-sm" : "text-gray-400 hover:text-white hover:bg-gray-900"}`}>
+                <div className="flex gap-2 bg-gray-950 p-1 rounded-lg border border-gray-800 overflow-x-auto max-w-full custom-scrollbar">
+                  <button onClick={() => setWhSubTab("infrastructure")} className={`whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium transition-all ${whSubTab === "infrastructure" ? "bg-gray-800 text-white shadow-sm" : "text-gray-400 hover:text-white hover:bg-gray-900"}`}>
                     Infrastructure
                   </button>
-                  <button onClick={() => setWhSubTab("transfers")} className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${whSubTab === "transfers" ? "bg-gray-800 text-white shadow-sm" : "text-gray-400 hover:text-white hover:bg-gray-900"}`}>
+                  <button onClick={() => setWhSubTab("transfers")} className={`whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium transition-all ${whSubTab === "transfers" ? "bg-gray-800 text-white shadow-sm" : "text-gray-400 hover:text-white hover:bg-gray-900"}`}>
                     Stock Transfers
                   </button>
-                  <button onClick={() => setWhSubTab("bylocation")} className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${whSubTab === "bylocation" ? "bg-gray-800 text-white shadow-sm" : "text-gray-400 hover:text-white hover:bg-gray-900"}`}>
+                  <button onClick={() => setWhSubTab("bylocation")} className={`whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium transition-all ${whSubTab === "bylocation" ? "bg-gray-800 text-white shadow-sm" : "text-gray-400 hover:text-white hover:bg-gray-900"}`}>
                     Stock By Location
                   </button>
                 </div>
@@ -834,7 +834,7 @@ export default function InventoryDashboard() {
                               <td className="px-4 py-4 text-gray-300">{loc.shelf}</td>
                               <td className="px-4 py-4 font-mono text-gray-400">{loc.bin}</td>
                               <td className="px-4 py-4 text-right">
-                                <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
                                   <button onClick={() => handleOpenLocModal(loc)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded transition-colors"><Edit className="h-4 w-4" /></button>
                                   <button onClick={() => handleDeleteLoc(loc.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded transition-colors"><Trash2 className="h-4 w-4" /></button>
                                 </div>
@@ -882,7 +882,7 @@ export default function InventoryDashboard() {
                                 <td className="px-4 py-4"><span className="bg-blue-900/30 border border-blue-800 px-2 py-1 rounded text-xs text-blue-400">{tr.toLoc}</span></td>
                                 <td className="px-4 py-4 font-bold text-emerald-400">{tr.quantity} units</td>
                                 <td className="px-4 py-4 text-right">
-                                  <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <div className="flex justify-end gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
                                     <button onClick={() => handleOpenTransferModal(tr)} className="p-2 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white rounded transition-colors"><Edit className="h-4 w-4" /></button>
                                     <button onClick={() => handleDeleteTransfer(tr.id)} className="p-2 bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white rounded transition-colors"><Trash2 className="h-4 w-4" /></button>
                                   </div>
@@ -940,7 +940,7 @@ export default function InventoryDashboard() {
 
       {/* Parts Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 z-50">
           <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-5xl flex flex-col max-h-[90vh]">
             <div className="flex justify-between items-center p-6 border-b border-gray-800">
               <h2 className="text-xl font-bold text-white">{editingId ? "Edit Part Details" : "Add New Part"}</h2>
@@ -977,7 +977,7 @@ export default function InventoryDashboard() {
                   <InputField label="Cost (PKR)" name="cost" type="number" value={formData.cost} onChange={handleInputChange} required />
                   <InputField label="Selling Price (PKR)" name="sellingPrice" type="number" value={formData.sellingPrice} onChange={handleInputChange} required />
                   <InputField label="Supplier" name="supplier" value={formData.supplier} onChange={handleInputChange} />
-                  <div className="col-span-4 grid grid-cols-4 gap-4 mt-2">
+                  <div className="col-span-full md:col-span-4 grid grid-cols-1 sm:grid-cols-4 gap-4 mt-2">
                     <InputField label="Current Stock" name="stock" type="number" value={formData.stock} onChange={handleInputChange} required />
                     <InputField label="Reorder Level" name="reorderLevel" type="number" value={formData.reorderLevel} onChange={handleInputChange} />
                     <InputField label="Minimum Stock" name="minStock" type="number" value={formData.minStock} onChange={handleInputChange} />
@@ -1211,7 +1211,7 @@ function SidebarButton({ id, active, onClick, icon, label }: { id: string, activ
   return (
     <button 
       onClick={() => onClick(id)}
-      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium ${isActive ? "bg-blue-600/10 text-blue-500 border border-blue-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}
+      className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-blue-600/10 text-blue-500 border border-blue-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}
     >
       {icon}
       {label}

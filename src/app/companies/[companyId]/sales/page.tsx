@@ -133,12 +133,12 @@ export default function SalesDashboard() {
   const isShortage = shortageAmount > 0;
 
   return (
-    <div className="flex h-screen bg-[var(--background)] overflow-hidden relative">
+    <div className="flex flex-col md:flex-row h-screen bg-[var(--background)] overflow-hidden relative">
       
       {/* Sidebar Navigation */}
-      <div className="w-64 border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0">
-        <div className="p-6 border-b border-gray-800">
-          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-6 flex items-center gap-2">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0 z-20">
+        <div className="p-4 md:p-6 border-b border-gray-800">
+          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
             ← Back to Modules
           </a>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
@@ -146,15 +146,15 @@ export default function SalesDashboard() {
           </h2>
         </div>
         
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<BarChart3 className="h-4 w-4" />} label="Dashboard" />
-          <SidebarButton id="orders" active={activeTab} onClick={setActiveTab} icon={<FileText className="h-4 w-4" />} label="Sales Orders" />
-          <SidebarButton id="customers" active={activeTab} onClick={setActiveTab} icon={<Users className="h-4 w-4" />} label="Customers Directory" />
+        <nav className="flex overflow-x-auto md:flex-col md:flex-1 p-4 gap-2 md:gap-0 md:space-y-1 md:overflow-y-auto custom-scrollbar">
+          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<BarChart3 className="h-4 w-4 shrink-0" />} label="Dashboard" />
+          <SidebarButton id="orders" active={activeTab} onClick={setActiveTab} icon={<FileText className="h-4 w-4 shrink-0" />} label="Sales Orders" />
+          <SidebarButton id="customers" active={activeTab} onClick={setActiveTab} icon={<Users className="h-4 w-4 shrink-0" />} label="Customers Directory" />
         </nav>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-8 bg-[#0a0a0a]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto pb-12">
 
           {/* --- DASHBOARD TAB --- */}
@@ -270,14 +270,19 @@ export default function SalesDashboard() {
           {/* --- ORDERS TAB --- */}
           {activeTab === "orders" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Sales Orders Ledger</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage full order cycles from draft to completion with live workflow tracking.</p>
                 </div>
-                <button onClick={() => openOrderModal()} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20">
-                  <Plus className="h-4 w-4" /> Create Sales Order
-                </button>
+                <div className="flex gap-3">
+                  <button className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm border border-gray-700">
+                    <Filter className="h-4 w-4" /> Filter
+                  </button>
+                  <button onClick={() => openOrderModal()} className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md flex items-center gap-2 text-sm shadow-lg shadow-emerald-500/20">
+                    <Plus className="h-4 w-4" /> Create Sales Order
+                  </button>
+                </div>
               </div>
               
               <div className="overflow-auto flex-1 rounded-lg border border-gray-800 bg-gray-950/50">
@@ -355,7 +360,7 @@ export default function SalesDashboard() {
           {/* --- CUSTOMERS TAB (FULLY FUNCTIONAL) --- */}
           {activeTab === "customers" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Customer Directory</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage all B2B and B2C client accounts, details, and financial terms.</p>
@@ -383,7 +388,7 @@ export default function SalesDashboard() {
                   </thead>
                   <tbody className="divide-y divide-gray-800/60">
                     {customers.length === 0 ? (
-                      <tr><td colSpan={5} className="px-4 py-12 text-center text-gray-500">No customers found. Click Add Customer to get started.</td></tr>
+                      <tr><td colSpan={5} className="px-4 py-12 text-center text-gray-500">No customers found. Click "Add Customer" to get started.</td></tr>
                     ) : (
                       customers.map((cust) => (
                         <tr key={cust.id} className="hover:bg-gray-800/40 transition-colors group">
@@ -606,7 +611,7 @@ export default function SalesDashboard() {
 function SidebarButton({ id, active, onClick, icon, label }: { id: string, active: string, onClick: (id: string) => void, icon: React.ReactNode, label: string }) {
   const isActive = active === id;
   return (
-    <button onClick={() => onClick(id)} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium ${isActive ? "bg-emerald-600/10 text-emerald-400 border border-emerald-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}>{icon}{label}</button>
+    <button onClick={() => onClick(id)} className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-emerald-600/10 text-emerald-400 border border-emerald-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}>{icon}{label}</button>
   );
 }
 

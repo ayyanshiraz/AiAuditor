@@ -175,12 +175,12 @@ export default function ProductionDashboard() {
   const workflowSteps = ["Draft", "Planned", "Released", "Mat. Issued", "In Prod", "QC", "Completed", "Closed"];
 
   return (
-    <div className="flex h-screen bg-[var(--background)] overflow-hidden relative">
+    <div className="flex flex-col md:flex-row h-screen bg-[var(--background)] overflow-hidden relative">
       
       {/* Sidebar Navigation */}
-      <div className="w-64 border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0">
-        <div className="p-6 border-b border-gray-800">
-          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-6 flex items-center gap-2">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0 z-20">
+        <div className="p-4 md:p-6 border-b border-gray-800">
+          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
             ← Back to Modules
           </a>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
@@ -188,16 +188,16 @@ export default function ProductionDashboard() {
           </h2>
         </div>
         
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<BarChart3 className="h-4 w-4" />} label="Dashboard" />
-          <SidebarButton id="orders" active={activeTab} onClick={setActiveTab} icon={<HardHat className="h-4 w-4" />} label="Production Orders" />
-          <SidebarButton id="bom" active={activeTab} onClick={setActiveTab} icon={<ListOrdered className="h-4 w-4" />} label="Bill of Materials (BOM)" />
-          <SidebarButton id="recipe" active={activeTab} onClick={setActiveTab} icon={<Cog className="h-4 w-4" />} label="Manufacturing Recipes" />
+        <nav className="flex overflow-x-auto md:flex-col md:flex-1 p-4 gap-2 md:gap-0 md:space-y-1 md:overflow-y-auto custom-scrollbar">
+          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<BarChart3 className="h-4 w-4 shrink-0" />} label="Dashboard" />
+          <SidebarButton id="orders" active={activeTab} onClick={setActiveTab} icon={<HardHat className="h-4 w-4 shrink-0" />} label="Production Orders" />
+          <SidebarButton id="bom" active={activeTab} onClick={setActiveTab} icon={<ListOrdered className="h-4 w-4 shrink-0" />} label="Bill of Materials (BOM)" />
+          <SidebarButton id="recipe" active={activeTab} onClick={setActiveTab} icon={<Cog className="h-4 w-4 shrink-0" />} label="Manufacturing Recipes" />
         </nav>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-8 bg-[#0a0a0a]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto pb-12">
 
           {/* --- DASHBOARD TAB --- */}
@@ -242,7 +242,7 @@ export default function ProductionDashboard() {
                     ].map((bar, i) => (
                       <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
-                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">{bar.val}</span>
+                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">{bar.val}</span>
                           <div className="w-full max-w-[3rem] bg-orange-600/40 hover:bg-orange-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
                         </div>
                         <span className="text-xs text-gray-500 mt-3">{bar.month}</span>
@@ -298,7 +298,7 @@ export default function ProductionDashboard() {
           {/* --- PRODUCTION ORDERS TAB --- */}
           {activeTab === "orders" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Production Orders Ledger</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage active manufacturing jobs, material consumption, output metrics, and live status routing.</p>
@@ -389,7 +389,7 @@ export default function ProductionDashboard() {
           {/* --- BOM TAB --- */}
           {activeTab === "bom" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Bill of Materials (BOM)</h2>
                   <p className="text-gray-400 text-sm mt-1">Define the raw materials and precise component quantities required for finished products.</p>
@@ -405,7 +405,7 @@ export default function ProductionDashboard() {
                 ) : (
                   boms.map((bom) => (
                     <div key={bom.id} className="bg-gray-950 border border-gray-800 rounded-xl p-5 hover:border-gray-700 transition-colors">
-                      <div className="flex justify-between items-start mb-6 border-b border-gray-800 pb-5">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 border-b border-gray-800 pb-5">
                         <div>
                           <div className="flex items-center gap-3">
                             <h3 className="text-xl font-bold text-white">{bom.product}</h3>
@@ -422,8 +422,8 @@ export default function ProductionDashboard() {
                       
                       <div className="mb-6">
                         <h4 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Required Components</h4>
-                        <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
-                          <table className="w-full text-left text-sm text-gray-300">
+                        <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-x-auto">
+                          <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
                             <thead className="bg-gray-950 text-xs text-gray-500 uppercase border-b border-gray-800">
                                <tr>
                                  <th className="px-4 py-3 font-medium">Component / Material</th>
@@ -460,7 +460,7 @@ export default function ProductionDashboard() {
           {/* --- RECIPES TAB (FULLY FUNCTIONAL) --- */}
           {activeTab === "recipe" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Manufacturing Recipes</h2>
                   <p className="text-gray-400 text-sm mt-1">Define sequence, machinery, operations, and QA parameters.</p>
@@ -476,7 +476,7 @@ export default function ProductionDashboard() {
                 ) : (
                   recipes.map((recipe) => (
                     <div key={recipe.id} className="bg-gray-950 border border-gray-800 rounded-xl p-5 hover:border-gray-700 transition-colors">
-                      <div className="flex justify-between items-start mb-4 border-b border-gray-800 pb-4">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-4 border-b border-gray-800 pb-4">
                         <div>
                           <div className="flex items-center gap-3">
                             <h3 className="text-lg font-bold text-white">{recipe.product}</h3>
@@ -514,8 +514,8 @@ export default function ProductionDashboard() {
                       {/* Operations Ledger */}
                       <div className="mt-4">
                         <h4 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wider">Operations Routing Sequence</h4>
-                        <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
-                          <table className="w-full text-left text-sm text-gray-300">
+                        <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-x-auto">
+                          <table className="w-full text-left text-sm text-gray-300 whitespace-nowrap">
                             <thead className="bg-gray-950 text-xs text-gray-500 uppercase border-b border-gray-800">
                                <tr>
                                  <th className="px-4 py-3 font-medium w-16">Seq</th>
@@ -685,15 +685,17 @@ export default function ProductionDashboard() {
                 </div>
                 <div className="space-y-3">
                   {bomForm.components.map((comp, idx) => (
-                     <div key={idx} className="flex items-center gap-3">
-                       <input type="text" placeholder="Component / Material Name" value={comp.name} onChange={(e) => { const newComps = [...bomForm.components]; newComps[idx].name = e.target.value; setBomForm({...bomForm, components: newComps}); }} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 flex-1 transition-colors" required />
-                       <input type="number" placeholder="Qty" value={comp.qty} onChange={(e) => { const newComps = [...bomForm.components]; newComps[idx].qty = e.target.value; setBomForm({...bomForm, components: newComps}); }} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 w-32 transition-colors" required />
-                       <input type="text" placeholder="Unit (e.g. Pcs, Kg)" value={comp.unit} onChange={(e) => { const newComps = [...bomForm.components]; newComps[idx].unit = e.target.value; setBomForm({...bomForm, components: newComps}); }} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 w-32 transition-colors" required />
-                       {bomForm.components.length > 1 && (
-                          <button type="button" onClick={() => { const newComps = bomForm.components.filter((_, i) => i !== idx); setBomForm({...bomForm, components: newComps}); }} className="text-gray-500 hover:text-red-500 p-2 transition-colors" title="Remove Component">
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                       )}
+                     <div key={idx} className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                       <input type="text" placeholder="Component / Material Name" value={comp.name} onChange={(e) => { const newComps = [...bomForm.components]; newComps[idx].name = e.target.value; setBomForm({...bomForm, components: newComps}); }} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 w-full md:flex-1 transition-colors" required />
+                       <div className="flex items-center gap-3 w-full md:w-auto">
+                         <input type="number" placeholder="Qty" value={comp.qty} onChange={(e) => { const newComps = [...bomForm.components]; newComps[idx].qty = e.target.value; setBomForm({...bomForm, components: newComps}); }} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 w-32 transition-colors" required />
+                         <input type="text" placeholder="Unit" value={comp.unit} onChange={(e) => { const newComps = [...bomForm.components]; newComps[idx].unit = e.target.value; setBomForm({...bomForm, components: newComps}); }} className="bg-gray-950 border border-gray-700 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 w-32 transition-colors" required />
+                         {bomForm.components.length > 1 && (
+                            <button type="button" onClick={() => { const newComps = bomForm.components.filter((_, i) => i !== idx); setBomForm({...bomForm, components: newComps}); }} className="text-gray-500 hover:text-red-500 p-2 transition-colors" title="Remove Component">
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                         )}
+                       </div>
                      </div>
                   ))}
                 </div>
@@ -816,7 +818,13 @@ export default function ProductionDashboard() {
 function SidebarButton({ id, active, onClick, icon, label }: { id: string, active: string, onClick: (id: string) => void, icon: React.ReactNode, label: string }) {
   const isActive = active === id;
   return (
-    <button onClick={() => onClick(id)} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium ${isActive ? "bg-orange-600/10 text-orange-500 border border-orange-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}>{icon}{label}</button>
+    <button 
+      onClick={() => onClick(id)} 
+      className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-orange-600/10 text-orange-500 border border-orange-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}
+    >
+      {icon}
+      {label}
+    </button>
   );
 }
 

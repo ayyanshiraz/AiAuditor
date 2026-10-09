@@ -199,12 +199,12 @@ export default function ShippingDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-[var(--background)] overflow-hidden relative">
+    <div className="flex flex-col md:flex-row h-screen bg-[var(--background)] overflow-hidden relative">
       
       {/* Sidebar Navigation */}
-      <div className="w-64 border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0">
-        <div className="p-6 border-b border-gray-800">
-          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-6 flex items-center gap-2">
+      <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-800 bg-gray-950 flex flex-col flex-shrink-0 z-20">
+        <div className="p-4 md:p-6 border-b border-gray-800">
+          <a href="." className="text-gray-400 hover:text-white transition-colors text-xs font-semibold uppercase tracking-wider mb-4 md:mb-6 flex items-center gap-2">
             ← Back to Modules
           </a>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
@@ -212,16 +212,16 @@ export default function ShippingDashboard() {
           </h2>
         </div>
         
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<Home className="h-4 w-4" />} label="Dashboard & Workflow" />
-          <SidebarButton id="shipments" active={activeTab} onClick={setActiveTab} icon={<Truck className="h-4 w-4" />} label="Shipments Master" />
-          <SidebarButton id="pickpack" active={activeTab} onClick={setActiveTab} icon={<Box className="h-4 w-4" />} label="Pick & Pack" />
-          <SidebarButton id="returns" active={activeTab} onClick={setActiveTab} icon={<RotateCcw className="h-4 w-4" />} label="Returns Management" />
+        <nav className="flex overflow-x-auto md:flex-col md:flex-1 p-4 gap-2 md:gap-0 md:space-y-1 md:overflow-y-auto custom-scrollbar">
+          <SidebarButton id="dashboard" active={activeTab} onClick={setActiveTab} icon={<Home className="h-4 w-4 shrink-0" />} label="Dashboard & Workflow" />
+          <SidebarButton id="shipments" active={activeTab} onClick={setActiveTab} icon={<Truck className="h-4 w-4 shrink-0" />} label="Shipments Master" />
+          <SidebarButton id="pickpack" active={activeTab} onClick={setActiveTab} icon={<Box className="h-4 w-4 shrink-0" />} label="Pick & Pack" />
+          <SidebarButton id="returns" active={activeTab} onClick={setActiveTab} icon={<RotateCcw className="h-4 w-4 shrink-0" />} label="Returns Management" />
         </nav>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-8 bg-[#0a0a0a]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto pb-12">
 
           {/* --- Tab Content: Dashboard & Workflow --- */}
@@ -261,7 +261,7 @@ export default function ShippingDashboard() {
                     ].map((bar, i) => (
                       <div key={i} className="flex flex-col items-center w-full h-full group">
                         <div className="w-full relative flex justify-center h-full items-end">
-                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">{bar.val}</span>
+                          <span className="absolute -top-8 text-xs font-semibold text-white opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity bg-gray-800 px-2 py-1 rounded">{bar.val}</span>
                           <div className="w-full max-w-[3rem] bg-purple-600/40 hover:bg-purple-500 rounded-t-sm transition-all duration-300" style={{ height: bar.height }}></div>
                         </div>
                         <span className="text-xs text-gray-500 mt-3">{bar.month}</span>
@@ -318,7 +318,7 @@ export default function ShippingDashboard() {
           {/* --- Tab Content: Shipments --- */}
           {activeTab === "shipments" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Master Shipments Ledger</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage, track, and update all dispatch records and live workflow tracking.</p>
@@ -407,7 +407,7 @@ export default function ShippingDashboard() {
           {/* --- Tab Content: Pick & Pack --- */}
           {activeTab === "pickpack" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Pick & Pack Operations</h2>
                   <p className="text-gray-400 text-sm mt-1">Manage warehouse item retrieval and packaging assignments.</p>
@@ -483,7 +483,7 @@ export default function ShippingDashboard() {
           {/* --- Tab Content: Returns Management (FULLY FUNCTIONAL) --- */}
           {activeTab === "returns" && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col min-h-[85vh]">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-white">Returns Management</h2>
                   <p className="text-gray-400 text-sm mt-1">Process returned shipments, evaluate item conditions, and assign Restock or Scrap actions.</p>
@@ -708,7 +708,7 @@ function SidebarButton({ id, active, onClick, icon, label }: { id: string, activ
   return (
     <button 
       onClick={() => onClick(id)}
-      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium ${isActive ? "bg-purple-600/10 text-purple-400 border border-purple-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}
+      className={`md:w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-sm font-medium whitespace-nowrap ${isActive ? "bg-purple-600/10 text-purple-400 border border-purple-500/20" : "text-gray-400 hover:bg-gray-900 hover:text-white"}`}
     >
       {icon}
       {label}
