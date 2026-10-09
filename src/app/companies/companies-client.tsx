@@ -68,7 +68,8 @@ export function CompaniesClient({
       toast.success("Company created.");
       setOpen(false);
       setForm(emptyForm);
-      router.push(`/companies/${company.id}/dashboard`);
+      // Updated redirect to load the modules selection screen first
+      router.push(`/companies/${company.id}`);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Failed to create company.");
     } finally {
@@ -212,7 +213,8 @@ export function CompaniesClient({
               <Card
                 key={c.id}
                 className="cursor-pointer transition-shadow hover:shadow-md"
-                onClick={() => router.push(`/companies/${c.id}/dashboard`)}
+                // Updated click handler to link to the new modules hub
+                onClick={() => router.push(`/companies/${c.id}`)}
               >
                 <CardHeader className="flex flex-row items-start justify-between space-y-0">
                   <div>
